@@ -1,0 +1,1249 @@
+List of 12
+ $ coefficients : Named num [1:2] 2.555 0.496
+  ..- attr(*, "names")= chr [1:2] "(Intercept)" "log(body)"
+ $ residuals    : Named num [1:28] -0.612 0.446 0.446 0.543 -0.87 ...
+  ..- attr(*, "names")= chr [1:28] "Mountain beaver" "Cow" "Grey wolf" "Goat" ...
+ $ effects      : Named num [1:28] -23.417 -9.718 0.535 0.638 -0.696 ...
+  ..- attr(*, "names")= chr [1:28] "(Intercept)" "log(body)" "" "" ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:28] 2.7 5.6 4.34 4.2 2.57 ...
+  ..- attr(*, "names")= chr [1:28] "Mountain beaver" "Cow" "Grey wolf" "Goat" ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+  ..$ qr   : num [1:28, 1:2] -5.292 0.189 0.189 0.189 0.189 ...
+  .. ..- attr(*, "dimnames")=List of 2
+  .. .. ..$ : chr [1:28] "Mountain beaver" "Cow" "Grey wolf" "Goat" ...
+  .. .. ..$ : chr [1:2] "(Intercept)" "log(body)"
+  .. ..- attr(*, "assign")= int [1:2] 0 1
+  ..$ qraux: num [1:2] 1.19 1.15
+  ..$ pivot: int [1:2] 1 2
+  ..$ tol  : num 1e-07
+  ..$ rank : int 2
+  ..- attr(*, "class")= chr "qr"
+ $ df.residual  : int 26
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = log(brain) ~ log(body), data = Animals)
+ $ terms        :Classes 'terms', 'formula'  language log(brain) ~ log(body)
+  .. ..- attr(*, "variables")= language list(log(brain), log(body))
+  .. ..- attr(*, "factors")= int [1:2, 1] 0 1
+  .. .. ..- attr(*, "dimnames")=List of 2
+  .. .. .. ..$ : chr [1:2] "log(brain)" "log(body)"
+  .. .. .. ..$ : chr "log(body)"
+  .. ..- attr(*, "term.labels")= chr "log(body)"
+  .. ..- attr(*, "order")= int 1
+  .. ..- attr(*, "intercept")= int 1
+  .. ..- attr(*, "response")= int 1
+  .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
+  .. ..- attr(*, "predvars")= language list(log(brain), log(body))
+  .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
+  .. .. ..- attr(*, "names")= chr [1:2] "log(brain)" "log(body)"
+ $ model        :'data.frame':	28 obs. of  2 variables:
+  ..$ log(brain): num [1:28] 2.09 6.05 4.78 4.74 1.7 ...
+  ..$ log(body) : num [1:28] 0.3001 6.142 3.5926 3.32 0.0392 ...
+  ..- attr(*, "terms")=Classes 'terms', 'formula'  language log(brain) ~ log(body)
+  .. .. ..- attr(*, "variables")= language list(log(brain), log(body))
+  .. .. ..- attr(*, "factors")= int [1:2, 1] 0 1
+  .. .. .. ..- attr(*, "dimnames")=List of 2
+  .. .. .. .. ..$ : chr [1:2] "log(brain)" "log(body)"
+  .. .. .. .. ..$ : chr "log(body)"
+  .. .. ..- attr(*, "term.labels")= chr "log(body)"
+  .. .. ..- attr(*, "order")= int 1
+  .. .. ..- attr(*, "intercept")= int 1
+  .. .. ..- attr(*, "response")= int 1
+  .. .. ..- attr(*, ".Environment")=<environment: R_GlobalEnv> 
+  .. .. ..- attr(*, "predvars")= language list(log(brain), log(body))
+  .. .. ..- attr(*, "dataClasses")= Named chr [1:2] "numeric" "numeric"
+  .. .. .. ..- attr(*, "names")= chr [1:2] "log(brain)" "log(body)"
+ - attr(*, "class")= chr "lm"
+[1] 3.141593
+[1] 1.414214
+[1] 3.141593
+[1] 1.414214
+[1] 3.605551
+[1] "a" "b" "c" "d"
+a :  num [1:20] 0.776 1.168 -0.699 -1.1 -1.284 ...
+b : List of 6
+ $ breaks  : num [1:10] -1.5 -1 -0.5 0 0.5 1 1.5 2 2.5 3
+ $ counts  : int [1:9] 3 3 4 3 3 2 0 1 1
+ $ density : num [1:9] 0.3 0.3 0.4 0.3 0.3 0.2 0 0.1 0.1
+ $ mids    : num [1:9] -1.25 -0.75 -0.25 0.25 0.75 1.25 1.75 2.25 2.75
+ $ xname   : chr "a"
+ $ equidist: logi TRUE
+f :  num [1:8] 0 1 1 2 3 5 8 13
+m1 : List of 12
+ $ coefficients : Named num [1:2] 2.555 0.496
+ $ residuals    : Named num [1:28] -0.612 0.446 0.446 0.543 -0.87 ...
+ $ effects      : Named num [1:28] -23.417 -9.718 0.535 0.638 -0.696 ...
+ $ rank         : int 2
+ $ fitted.values: Named num [1:28] 2.7 5.6 4.34 4.2 2.57 ...
+ $ assign       : int [1:2] 0 1
+ $ qr           :List of 5
+ $ df.residual  : int 26
+ $ xlevels      : Named list()
+ $ call         : language lm(formula = log(brain) ~ log(body), data = Animals)
+ $ terms        :Classes 'terms', 'formula'  language log(brain) ~ log(body)
+ $ model        :'data.frame':	28 obs. of  2 variables:
+x :  chr [1:4] "a" "b" "c" "d"
+y :  num 2
+z :  num 3.61
+[1] "a"  "b"  "f"  "m1" "x"  "y"  "z" 
+[1] "a"  "b"  "f"  "m1" "x"  "y"  "z" 
+[1] NA
+[1] NA
+ [1]  1  2  3  4  5  6  7  8  9 10
+[1]  0  1  1  2  3  5  8 13
+NULL
+[1] 0.0000000 0.6931472 0.6931472 1.0986123 1.3862944 1.7917595 2.1972246
+[8] 2.6390573
+[1] 3.141593
+pi 값은  3.141593 입니다. 
+[1] 3.141593
+      des  fare
+1    부산  4500
+2    영덕  8300
+3    장소  4400
+4    대구  4200
+5    도곡  9600
+6    근덕 22600
+7    울산  4900
+8    병원  9800
+9    삼척 23600
+10   포항  3100
+11   영해 10000
+12   동해 25200
+13 나루끝  3600
+14   병곡 10800
+15   강릉 28600
+16   청하  5600
+17   후포 11900
+18 주문진 30500
+19   송라  5900
+20   평해 12400
+21   인구 31900
+22   장사  6600
+23   월송 12700
+24 하조대 32700
+25   강구  7500
+26   기성 13400
+27   손양 33700
+'data.frame':	10 obs. of  4 variables:
+ $ empno : int  10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+ $ ename : Factor w/ 10 levels "Blake","Bruce",..: 9 7 10 6 4 2 5 1 8 3
+ $ deptno: int  11 11 30 20 30 30 20 11 11 20
+ $ phone : Factor w/ 10 levels "523-4566","523-4567",..: 1 2 3 4 5 6 7 8 9 10
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+      phone
+1  523-4566
+2  523-4567
+3  523-4568
+4  523-4569
+5  523-4570
+6  523-4571
+7  523-4572
+8  523-4573
+9  523-4574
+10 523-4575
+   empno
+1  10001
+2  10002
+3  10003
+4  10004
+5  10005
+6  10006
+7  10007
+8  10008
+9  10009
+10 10010
+ [1] 10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+   empno
+1  10001
+2  10002
+3  10003
+4  10004
+5  10005
+6  10006
+7  10007
+8  10008
+9  10009
+10 10010
+   empno
+1  10001
+2  10002
+3  10003
+4  10004
+5  10005
+6  10006
+7  10007
+8  10008
+9  10009
+10 10010
+   empno
+1  10001
+2  10002
+3  10003
+4  10004
+5  10005
+6  10006
+7  10007
+8  10008
+9  10009
+10 10010
+ [1] 10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+[1] Toom
+Levels: Blake Bruce James Jim Jones Jongsik Kim Martin Toom Yoon
+  empno ename deptno    phone
+2 10002   Kim     11 523-4567
+ [1] Toom    Kim     Yoon    Jongsik Jim     Bruce   Jones   Blake  
+ [9] Martin  James  
+Levels: Blake Bruce James Jim Jones Jongsik Kim Martin Toom Yoon
+[1] 3.141593
+[1] 1
+[1] 10
+[1] 3.141593
+[1] NA
+[1] 1 2 3 4 5 6 7 8 9
+     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+
+[1] 1 2 3 4 5
+[1]  6  7  8  9 10
+ [1]  1  2  3  4  5  6  7  8  9 10
+ [1]  1  2  3  4  5  6  7  8  9 10 NA 12
+ [1]  1  2  3  4  5  6  7  8  9 10 NA 12
+ [1]   1   2   3   4   5 100   6   7   8   9  10  NA  12
+ [1]  6  7  8  9 10  1  2  3  4  5  6  7  8  9 10 NA 12
+ [1]  1  6  7  8  9 10  2  3  4  5  6  7  8  9 10 NA 12
+     [,1]
+[1,]    1
+[2,]    2
+[3,]    3
+[4,]    4
+[5,]    5
+[6,]    6
+     [,1]
+[1,]    1
+[2,]    2
+[3,]    3
+[4,]    4
+[5,]    5
+[6,]    6
+     [,1]
+[1,]    1
+[2,]    2
+[3,]    3
+     [,1] [,2]
+[1,]    1    1
+[2,]    2    2
+[3,]    3    3
+[4,]    4    1
+[5,]    5    2
+[6,]    6    3
+     [,1] [,2]
+[1,]    1    1
+[2,]    2    2
+[3,]    3    3
+[4,]    4    1
+[5,]    5    2
+[6,]    6    3
+     [,1] [,2] [,3]
+[1,]    1    1    1
+[2,]    2    2    2
+[3,]    3    3    3
+[4,]    4    1    4
+[5,]    5    2    5
+[6,]    6    3    6
+[1]  8 10 12 11 13 15 17
+[1] 1 2 3
+Levels: 1 2 3
+ [1] A A A B B C A A C B A A
+Levels: A B C
+ [1] A    A    A    <NA> <NA> C    A    A    C    <NA> A    A   
+Levels: A C D E F
+[[1]]
+[1] 3.14
+
+[[2]]
+[1] "Tom"
+
+[[3]]
+[1] 1 2 3 4
+
+[[4]]
+function (x, ...) 
+UseMethod("mean")
+<bytecode: 0x000000000d386650>
+<environment: namespace:base>
+
+[1] 3
+[[1]]
+[1] 5 6 7
+
+[1] 5 6 7
+[[1]]
+[1] "TY"
+
+[[2]]
+[1] 5 6 7
+
+$mid
+[1] 1.1
+
+$far
+[1] 1.5
+
+$more.far
+[1] 2
+
+$msadasdid
+[1] 1.1
+
+$fasdsadar
+[1] 1.5
+
+$mosadsadsadre.fsadsadsadar
+[1] 2
+
+[1] 1.1
+$mid
+[1] 1.1
+
+$mid
+[1] 1.1
+
+$far
+[1] 1.5
+
+[1] "numeric"
+[1] "numeric"
+[1] "list"
+[1] "list"
+[1] "list"
+[1] "list"
+$mid
+[1] 1.1
+
+$far
+[1] 1.5
+
+$more.far
+[1] 2
+
+$msadasdid
+[1] 1.1
+
+$fasdsadar
+[1] 1.5
+
+$mosadsadsadre.fsadsadsadar
+[1] 2
+
+     [,1] [,2] [,3]
+[1,]  1.1  1.3  2.4
+[2,]  1.2  1.4  2.3
+     [,1] [,2]
+[1,]  3.1  4.1
+[2,]  3.4  4.3
+[3,]  3.6  4.7
+     [,1] [,2] [,3]
+[1,]  1.1  1.2  1.3
+[2,]  3.1  3.4  3.6
+[3,]  4.1  4.3  4.7
+     [,1] [,2] [,3]
+[1,]  1.1  3.1  4.1
+[2,]  1.2  3.4  4.3
+[3,]  1.3  3.6  4.7
+     [,1] [,2]
+[1,]    0    0
+[2,]    0    0
+     [,1] [,2]
+[1,]   NA   NA
+[2,]   NA   NA
+     [,1] [,2] [,3]
+[1,]  1.1  3.1  4.1
+[2,]  1.2  3.4  4.3
+[3,]  1.3  3.6  4.7
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+     [,1] [,2]
+[1,]    6    3
+[2,]    5    2
+[3,]    4    1
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+     [,1] [,2]
+[1,]   -2  1.5
+[2,]    1 -0.5
+     [,1] [,2]
+[1,]   41   14
+[2,]   56   20
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    0    0    0    0
+[2,]    0    1    0    0    0
+[3,]    0    0    1    0    0
+[4,]    0    0    0    1    0
+[5,]    0    0    0    0    1
+        [,1] [,2] [,3]
+class A  1.1  1.3  2.4
+class B  1.2  1.4  2.3
+        min_d dis max_d
+class A   1.1 1.3   2.4
+class B   1.2 1.4   2.3
+min_d   dis max_d 
+  1.1   1.3   2.4 
+        min_d dis max_d
+class A   1.1 1.3   2.4
+        dis
+class A 1.3
+class B 1.4
+  level lbound ubound
+1   low    0.1    0.5
+2   mid    0.5    1.5
+3  high    1.5    2.5
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+'data.frame':	10 obs. of  4 variables:
+ $ empno : int  10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+ $ ename : Factor w/ 10 levels "Blake","Bruce",..: 9 7 10 6 4 2 5 1 8 3
+ $ deptno: int  11 11 30 20 30 30 20 11 11 20
+ $ phone : Factor w/ 10 levels "523-4566","523-4567",..: 1 2 3 4 5 6 7 8 9 10
+$empno
+ [1] 10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+
+$ename
+ [1] "Toom"    "Kim"     "Yoon"    "Jongsik" "Jim"     "Bruce"   "Jones"  
+ [8] "Blake"   "Martin"  "James"  
+
+$deptno
+ [1] 11 11 30 20 30 30 20 11 11 20
+
+$phone
+ [1] "523-4566" "523-4567" "523-4568" "523-4569" "523-4570" "523-4571"
+ [7] "523-4572" "523-4573" "523-4574" "523-4575"
+
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+'data.frame':	10 obs. of  4 variables:
+ $ empno : int  10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+ $ ename : chr  "Toom" "Kim" "Yoon" "Jongsik" ...
+ $ deptno: int  11 11 30 20 30 30 20 11 11 20
+ $ phone : chr  "523-4566" "523-4567" "523-4568" "523-4569" ...
+   a.empno a.ename a.deptno
+1    10001    Toom       11
+2    10002     Kim       11
+3    10003    Yoon       30
+4    10004 Jongsik       20
+5    10005     Jim       30
+6    10006   Bruce       30
+7    10007   Jones       20
+8    10008   Blake       11
+9    10009  Martin       11
+10   10010   James       20
+   empno   ename deptno
+1  10001    Toom     11
+2  10002     Kim     11
+3  10003    Yoon     30
+4  10004 Jongsik     20
+5  10005     Jim     30
+6  10006   Bruce     30
+7  10007   Jones     20
+8  10008   Blake     11
+9  10009  Martin     11
+10 10010   James     20
+$a1
+ [1] 10001 10002 10003 10004 10005 10006 10007 10008 10009 10010
+
+$a2
+ [1] "Toom"    "Kim"     "Yoon"    "Jongsik" "Jim"     "Bruce"   "Jones"  
+ [8] "Blake"   "Martin"  "James"  
+
+$a3
+ [1] 11 11 30 20 30 30 20 11 11 20
+
+$a4
+ [1] "523-4566" "523-4567" "523-4568" "523-4569" "523-4570" "523-4571"
+ [7] "523-4572" "523-4573" "523-4574" "523-4575"
+
+  T_name   z
+1     T1 5.7
+2     T3 5.8
+3     T5 6.9
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+   empno   ename   addno
+1  10001    Toom 780-600
+2  10002     Kim 780-600
+3  10003    Yoon 780-620
+4  10004 Jongsik 780-630
+5  10005     Jim 780-620
+6  10006   Bruce 780-620
+7  10007   Jones 780-630
+8  10008   Blake 780-600
+9  10009  Martin 780-600
+10 10010   James 780-630
+[1] -1.5 -1.7 -1.9 -1.1 -0.6 -1.2
+  value group
+1    24     A
+2    23     A
+3    52     B
+4    46     B
+5    75     C
+6    25     A
+  Manufacturer   Model    Type Min.Price Price Max.Price MPG.city
+1        Acura Integra   Small      12.9  15.9      18.8       25
+2        Acura  Legend Midsize      29.2  33.9      38.7       18
+3         Audi      90 Compact      25.9  29.1      32.3       20
+4         Audi     100 Midsize      30.8  37.7      44.6       19
+5          BMW    535i Midsize      23.7  30.0      36.2       22
+6        Buick Century Midsize      14.2  15.7      17.3       22
+  MPG.highway            AirBags DriveTrain Cylinders EngineSize
+1          31               None      Front         4        1.8
+2          25 Driver & Passenger      Front         6        3.2
+3          26        Driver only      Front         6        2.8
+4          26 Driver & Passenger      Front         6        2.8
+5          30        Driver only       Rear         4        3.5
+6          31        Driver only      Front         4        2.2
+  Horsepower  RPM Rev.per.mile Man.trans.avail Fuel.tank.capacity
+1        140 6300         2890             Yes               13.2
+2        200 5500         2335             Yes               18.0
+3        172 5500         2280             Yes               16.9
+4        172 5500         2535             Yes               21.1
+5        208 5700         2545             Yes               21.1
+6        110 5200         2565              No               16.4
+  Passengers Length Wheelbase Width Turn.circle Rear.seat.room
+1          5    177       102    68          37           26.5
+2          5    195       115    71          38           30.0
+3          5    180       102    67          37           28.0
+4          6    193       106    70          37           31.0
+5          4    186       109    69          39           27.0
+6          6    189       105    69          41           28.0
+  Luggage.room Weight  Origin          Make
+1           11   2705 non-USA Acura Integra
+2           15   3560 non-USA  Acura Legend
+3           14   3375 non-USA       Audi 90
+4           17   3405 non-USA      Audi 100
+5           13   3640 non-USA      BMW 535i
+6           16   2880     USA Buick Century
+[1] 37
+[1] 33
+[1] 38
+[1] 37
+      tr1  tr2  tr3  tr4  tr5
+Tom  82.5 89.9 81.9 88.2 79.2
+Yoon 88.2 78.3 83.5 89.5 81.5
+Moon 89.2 79.8 85.6 91.5 83.2
+Song 87.5 80.9 87.2 78.9 82.5
+  name  tr1  tr2  tr3  tr4  tr5
+1  Tom 82.5 88.2 89.2 87.5 89.9
+2 Yoon 78.3 79.8 80.9 81.9 83.5
+3 Moon 85.6 87.2 88.2 89.5 91.5
+4  Son 78.9 79.2 81.5 83.2 82.5
+    Manufacturer          Model    Type Min.Price Price Max.Price
+1          Acura        Integra   Small      12.9  15.9      18.8
+2          Acura         Legend Midsize      29.2  33.9      38.7
+3           Audi             90 Compact      25.9  29.1      32.3
+4           Audi            100 Midsize      30.8  37.7      44.6
+5            BMW           535i Midsize      23.7  30.0      36.2
+6          Buick        Century Midsize      14.2  15.7      17.3
+7          Buick        LeSabre   Large      19.9  20.8      21.7
+8          Buick     Roadmaster   Large      22.6  23.7      24.9
+9          Buick        Riviera Midsize      26.3  26.3      26.3
+10      Cadillac        DeVille   Large      33.0  34.7      36.3
+11      Cadillac        Seville Midsize      37.5  40.1      42.7
+12     Chevrolet       Cavalier Compact       8.5  13.4      18.3
+13     Chevrolet        Corsica Compact      11.4  11.4      11.4
+14     Chevrolet         Camaro  Sporty      13.4  15.1      16.8
+15     Chevrolet         Lumina Midsize      13.4  15.9      18.4
+16     Chevrolet     Lumina_APV     Van      14.7  16.3      18.0
+17     Chevrolet          Astro     Van      14.7  16.6      18.6
+18     Chevrolet        Caprice   Large      18.0  18.8      19.6
+19     Chevrolet       Corvette  Sporty      34.6  38.0      41.5
+20      Chrylser       Concorde   Large      18.4  18.4      18.4
+21      Chrysler        LeBaron Compact      14.5  15.8      17.1
+22      Chrysler       Imperial   Large      29.5  29.5      29.5
+23         Dodge           Colt   Small       7.9   9.2      10.6
+24         Dodge         Shadow   Small       8.4  11.3      14.2
+25         Dodge         Spirit Compact      11.9  13.3      14.7
+26         Dodge        Caravan     Van      13.6  19.0      24.4
+27         Dodge        Dynasty Midsize      14.8  15.6      16.4
+28         Dodge        Stealth  Sporty      18.5  25.8      33.1
+29         Eagle         Summit   Small       7.9  12.2      16.5
+30         Eagle         Vision   Large      17.5  19.3      21.2
+31          Ford        Festiva   Small       6.9   7.4       7.9
+32          Ford         Escort   Small       8.4  10.1      11.9
+33          Ford          Tempo Compact      10.4  11.3      12.2
+34          Ford        Mustang  Sporty      10.8  15.9      21.0
+35          Ford          Probe  Sporty      12.8  14.0      15.2
+36          Ford       Aerostar     Van      14.5  19.9      25.3
+37          Ford         Taurus Midsize      15.6  20.2      24.8
+38          Ford Crown_Victoria   Large      20.1  20.9      21.7
+39           Geo          Metro   Small       6.7   8.4      10.0
+40           Geo          Storm  Sporty      11.5  12.5      13.5
+41         Honda        Prelude  Sporty      17.0  19.8      22.7
+42         Honda          Civic   Small       8.4  12.1      15.8
+43         Honda         Accord Compact      13.8  17.5      21.2
+44       Hyundai          Excel   Small       6.8   8.0       9.2
+45       Hyundai        Elantra   Small       9.0  10.0      11.0
+46       Hyundai         Scoupe  Sporty       9.1  10.0      11.0
+47       Hyundai         Sonata Midsize      12.4  13.9      15.3
+48      Infiniti            Q45 Midsize      45.4  47.9      50.4
+49         Lexus          ES300 Midsize      27.5  28.0      28.4
+50         Lexus          SC300 Midsize      34.7  35.2      35.6
+51       Lincoln    Continental Midsize      33.3  34.3      35.3
+52       Lincoln       Town_Car   Large      34.4  36.1      37.8
+53         Mazda            323   Small       7.4   8.3       9.1
+54         Mazda        Protege   Small      10.9  11.6      12.3
+55         Mazda            626 Compact      14.3  16.5      18.7
+56         Mazda            MPV     Van      16.6  19.1      21.7
+57         Mazda           RX-7  Sporty      32.5  32.5      32.5
+58 Mercedes-Benz           190E Compact      29.0  31.9      34.9
+59 Mercedes-Benz           300E Midsize      43.8  61.9      80.0
+60       Mercury          Capri  Sporty      13.3  14.1      15.0
+61       Mercury         Cougar Midsize      14.9  14.9      14.9
+62    Mitsubishi         Mirage   Small       7.7  10.3      12.9
+63    Mitsubishi       Diamante Midsize      22.4  26.1      29.9
+64        Nissan         Sentra   Small       8.7  11.8      14.9
+65        Nissan         Altima Compact      13.0  15.7      18.3
+66        Nissan          Quest     Van      16.7  19.1      21.5
+67        Nissan         Maxima Midsize      21.0  21.5      22.0
+68    Oldsmobile        Achieva Compact      13.0  13.5      14.0
+69    Oldsmobile  Cutlass_Ciera Midsize      14.2  16.3      18.4
+70    Oldsmobile     Silhouette     Van      19.5  19.5      19.5
+71    Oldsmobile   Eighty-Eight   Large      19.5  20.7      21.9
+72      Plymouth          Laser  Sporty      11.4  14.4      17.4
+73       Pontiac         LeMans   Small       8.2   9.0       9.9
+74       Pontiac        Sunbird Compact       9.4  11.1      12.8
+75       Pontiac       Firebird  Sporty      14.0  17.7      21.4
+76       Pontiac     Grand_Prix Midsize      15.4  18.5      21.6
+77       Pontiac     Bonneville   Large      19.4  24.4      29.4
+78          Saab            900 Compact      20.3  28.7      37.1
+79        Saturn             SL   Small       9.2  11.1      12.9
+80        Subaru          Justy   Small       7.3   8.4       9.5
+81        Subaru         Loyale   Small      10.5  10.9      11.3
+82        Subaru         Legacy Compact      16.3  19.5      22.7
+83        Suzuki          Swift   Small       7.3   8.6      10.0
+84        Toyota         Tercel   Small       7.8   9.8      11.8
+85        Toyota         Celica  Sporty      14.2  18.4      22.6
+86        Toyota          Camry Midsize      15.2  18.2      21.2
+87        Toyota         Previa     Van      18.9  22.7      26.6
+88    Volkswagen            Fox   Small       8.7   9.1       9.5
+89    Volkswagen        Eurovan     Van      16.6  19.7      22.7
+90    Volkswagen         Passat Compact      17.6  20.0      22.4
+91    Volkswagen        Corrado  Sporty      22.9  23.3      23.7
+92         Volvo            240 Compact      21.8  22.7      23.5
+93         Volvo            850 Midsize      24.8  26.7      28.5
+   MPG.city MPG.highway            AirBags DriveTrain Cylinders
+1        25          31               None      Front         4
+2        18          25 Driver & Passenger      Front         6
+3        20          26        Driver only      Front         6
+4        19          26 Driver & Passenger      Front         6
+5        22          30        Driver only       Rear         4
+6        22          31        Driver only      Front         4
+7        19          28        Driver only      Front         6
+8        16          25        Driver only       Rear         6
+9        19          27        Driver only      Front         6
+10       16          25        Driver only      Front         8
+11       16          25 Driver & Passenger      Front         8
+12       25          36               None      Front         4
+13       25          34        Driver only      Front         4
+14       19          28 Driver & Passenger       Rear         6
+15       21          29               None      Front         4
+16       18          23               None      Front         6
+17       15          20               None        4WD         6
+18       17          26        Driver only       Rear         8
+19       17          25        Driver only       Rear         8
+20       20          28 Driver & Passenger      Front         6
+21       23          28 Driver & Passenger      Front         4
+22       20          26        Driver only      Front         6
+23       29          33               None      Front         4
+24       23          29        Driver only      Front         4
+25       22          27        Driver only      Front         4
+26       17          21        Driver only        4WD         6
+27       21          27        Driver only      Front         4
+28       18          24        Driver only        4WD         6
+29       29          33               None      Front         4
+30       20          28 Driver & Passenger      Front         6
+31       31          33               None      Front         4
+32       23          30               None      Front         4
+33       22          27               None      Front         4
+34       22          29        Driver only       Rear         4
+35       24          30        Driver only      Front         4
+36       15          20        Driver only        4WD         6
+37       21          30        Driver only      Front         6
+38       18          26        Driver only       Rear         8
+39       46          50               None      Front         3
+40       30          36        Driver only      Front         4
+41       24          31 Driver & Passenger      Front         4
+42       42          46        Driver only      Front         4
+43       24          31 Driver & Passenger      Front         4
+44       29          33               None      Front         4
+45       22          29               None      Front         4
+46       26          34               None      Front         4
+47       20          27               None      Front         4
+48       17          22        Driver only       Rear         8
+49       18          24        Driver only      Front         6
+50       18          23 Driver & Passenger       Rear         6
+51       17          26 Driver & Passenger      Front         6
+52       18          26 Driver & Passenger       Rear         8
+53       29          37               None      Front         4
+54       28          36               None      Front         4
+55       26          34        Driver only      Front         4
+56       18          24               None        4WD         6
+57       17          25        Driver only       Rear    rotary
+58       20          29        Driver only       Rear         4
+59       19          25 Driver & Passenger       Rear         6
+60       23          26        Driver only      Front         4
+61       19          26               None       Rear         6
+62       29          33               None      Front         4
+63       18          24        Driver only      Front         6
+64       29          33        Driver only      Front         4
+65       24          30        Driver only      Front         4
+66       17          23               None      Front         6
+67       21          26        Driver only      Front         6
+68       24          31               None      Front         4
+69       23          31        Driver only      Front         4
+70       18          23               None      Front         6
+71       19          28        Driver only      Front         6
+72       23          30               None        4WD         4
+73       31          41               None      Front         4
+74       23          31               None      Front         4
+75       19          28 Driver & Passenger       Rear         6
+76       19          27               None      Front         6
+77       19          28 Driver & Passenger      Front         6
+78       20          26        Driver only      Front         4
+79       28          38        Driver only      Front         4
+80       33          37               None        4WD         3
+81       25          30               None        4WD         4
+82       23          30        Driver only        4WD         4
+83       39          43               None      Front         3
+84       32          37        Driver only      Front         4
+85       25          32        Driver only      Front         4
+86       22          29        Driver only      Front         4
+87       18          22        Driver only        4WD         4
+88       25          33               None      Front         4
+89       17          21               None      Front         5
+90       21          30               None      Front         4
+91       18          25               None      Front         6
+92       21          28        Driver only       Rear         4
+93       20          28 Driver & Passenger      Front         5
+   EngineSize Horsepower  RPM Rev.per.mile Man.trans.avail
+1         1.8        140 6300         2890             Yes
+2         3.2        200 5500         2335             Yes
+3         2.8        172 5500         2280             Yes
+4         2.8        172 5500         2535             Yes
+5         3.5        208 5700         2545             Yes
+6         2.2        110 5200         2565              No
+7         3.8        170 4800         1570              No
+8         5.7        180 4000         1320              No
+9         3.8        170 4800         1690              No
+10        4.9        200 4100         1510              No
+11        4.6        295 6000         1985              No
+12        2.2        110 5200         2380             Yes
+13        2.2        110 5200         2665             Yes
+14        3.4        160 4600         1805             Yes
+15        2.2        110 5200         2595              No
+16        3.8        170 4800         1690              No
+17        4.3        165 4000         1790              No
+18        5.0        170 4200         1350              No
+19        5.7        300 5000         1450             Yes
+20        3.3        153 5300         1990              No
+21        3.0        141 5000         2090              No
+22        3.3        147 4800         1785              No
+23        1.5         92 6000         3285             Yes
+24        2.2         93 4800         2595             Yes
+25        2.5        100 4800         2535             Yes
+26        3.0        142 5000         1970              No
+27        2.5        100 4800         2465              No
+28        3.0        300 6000         2120             Yes
+29        1.5         92 6000         2505             Yes
+30        3.5        214 5800         1980              No
+31        1.3         63 5000         3150             Yes
+32        1.8        127 6500         2410             Yes
+33        2.3         96 4200         2805             Yes
+34        2.3        105 4600         2285             Yes
+35        2.0        115 5500         2340             Yes
+36        3.0        145 4800         2080             Yes
+37        3.0        140 4800         1885              No
+38        4.6        190 4200         1415              No
+39        1.0         55 5700         3755             Yes
+40        1.6         90 5400         3250             Yes
+41        2.3        160 5800         2855             Yes
+42        1.5        102 5900         2650             Yes
+43        2.2        140 5600         2610             Yes
+44        1.5         81 5500         2710             Yes
+45        1.8        124 6000         2745             Yes
+46        1.5         92 5550         2540             Yes
+47        2.0        128 6000         2335             Yes
+48        4.5        278 6000         1955              No
+49        3.0        185 5200         2325             Yes
+50        3.0        225 6000         2510             Yes
+51        3.8        160 4400         1835              No
+52        4.6        210 4600         1840              No
+53        1.6         82 5000         2370             Yes
+54        1.8        103 5500         2220             Yes
+55        2.5        164 5600         2505             Yes
+56        3.0        155 5000         2240              No
+57        1.3        255 6500         2325             Yes
+58        2.3        130 5100         2425             Yes
+59        3.2        217 5500         2220              No
+60        1.6        100 5750         2475             Yes
+61        3.8        140 3800         1730              No
+62        1.5         92 6000         2505             Yes
+63        3.0        202 6000         2210              No
+64        1.6        110 6000         2435             Yes
+65        2.4        150 5600         2130             Yes
+66        3.0        151 4800         2065              No
+67        3.0        160 5200         2045              No
+68        2.3        155 6000         2380              No
+69        2.2        110 5200         2565              No
+70        3.8        170 4800         1690              No
+71        3.8        170 4800         1570              No
+72        1.8         92 5000         2360             Yes
+73        1.6         74 5600         3130             Yes
+74        2.0        110 5200         2665             Yes
+75        3.4        160 4600         1805             Yes
+76        3.4        200 5000         1890             Yes
+77        3.8        170 4800         1565              No
+78        2.1        140 6000         2910             Yes
+79        1.9         85 5000         2145             Yes
+80        1.2         73 5600         2875             Yes
+81        1.8         90 5200         3375             Yes
+82        2.2        130 5600         2330             Yes
+83        1.3         70 6000         3360             Yes
+84        1.5         82 5200         3505             Yes
+85        2.2        135 5400         2405             Yes
+86        2.2        130 5400         2340             Yes
+87        2.4        138 5000         2515             Yes
+88        1.8         81 5500         2550             Yes
+89        2.5        109 4500         2915             Yes
+90        2.0        134 5800         2685             Yes
+91        2.8        178 5800         2385             Yes
+92        2.3        114 5400         2215             Yes
+93        2.4        168 6200         2310             Yes
+   Fuel.tank.capacity Passengers Length Wheelbase Width Turn.circle
+1                13.2          5    177       102    68          37
+2                18.0          5    195       115    71          38
+3                16.9          5    180       102    67          37
+4                21.1          6    193       106    70          37
+5                21.1          4    186       109    69          39
+6                16.4          6    189       105    69          41
+7                18.0          6    200       111    74          42
+8                23.0          6    216       116    78          45
+9                18.8          5    198       108    73          41
+10               18.0          6    206       114    73          43
+11               20.0          5    204       111    74          44
+12               15.2          5    182       101    66          38
+13               15.6          5    184       103    68          39
+14               15.5          4    193       101    74          43
+15               16.5          6    198       108    71          40
+16               20.0          7    178       110    74          44
+17               27.0          8    194       111    78          42
+18               23.0          6    214       116    77          42
+19               20.0          2    179        96    74          43
+20               18.0          6    203       113    74          40
+21               16.0          6    183       104    68          41
+22               16.0          6    203       110    69          44
+23               13.2          5    174        98    66          32
+24               14.0          5    172        97    67          38
+25               16.0          6    181       104    68          39
+26               20.0          7    175       112    72          42
+27               16.0          6    192       105    69          42
+28               19.8          4    180        97    72          40
+29               13.2          5    174        98    66          36
+30               18.0          6    202       113    74          40
+31               10.0          4    141        90    63          33
+32               13.2          5    171        98    67          36
+33               15.9          5    177       100    68          39
+34               15.4          4    180       101    68          40
+35               15.5          4    179       103    70          38
+36               21.0          7    176       119    72          45
+37               16.0          5    192       106    71          40
+38               20.0          6    212       114    78          43
+39               10.6          4    151        93    63          34
+40               12.4          4    164        97    67          37
+41               15.9          4    175       100    70          39
+42               11.9          4    173       103    67          36
+43               17.0          4    185       107    67          41
+44               11.9          5    168        94    63          35
+45               13.7          5    172        98    66          36
+46               11.9          4    166        94    64          34
+47               17.2          5    184       104    69          41
+48               22.5          5    200       113    72          42
+49               18.5          5    188       103    70          40
+50               20.6          4    191       106    71          39
+51               18.4          6    205       109    73          42
+52               20.0          6    219       117    77          45
+53               13.2          4    164        97    66          34
+54               14.5          5    172        98    66          36
+55               15.5          5    184       103    69          40
+56               19.6          7    190       110    72          39
+57               20.0          2    169        96    69          37
+58               14.5          5    175       105    67          34
+59               18.5          5    187       110    69          37
+60               11.1          4    166        95    65          36
+61               18.0          5    199       113    73          38
+62               13.2          5    172        98    67          36
+63               19.0          5    190       107    70          43
+64               13.2          5    170        96    66          33
+65               15.9          5    181       103    67          40
+66               20.0          7    190       112    74          41
+67               18.5          5    188       104    69          41
+68               15.2          5    188       103    67          39
+69               16.5          5    190       105    70          42
+70               20.0          7    194       110    74          44
+71               18.0          6    201       111    74          42
+72               15.9          4    173        97    67          39
+73               13.2          4    177        99    66          35
+74               15.2          5    181       101    66          39
+75               15.5          4    196       101    75          43
+76               16.5          5    195       108    72          41
+77               18.0          6    177       111    74          43
+78               18.0          5    184        99    67          37
+79               12.8          5    176       102    68          40
+80                9.2          4    146        90    60          32
+81               15.9          5    175        97    65          35
+82               15.9          5    179       102    67          37
+83               10.6          4    161        93    63          34
+84               11.9          5    162        94    65          36
+85               15.9          4    174        99    69          39
+86               18.5          5    188       103    70          38
+87               19.8          7    187       113    71          41
+88               12.4          4    163        93    63          34
+89               21.1          7    187       115    72          38
+90               18.5          5    180       103    67          35
+91               18.5          4    159        97    66          36
+92               15.8          5    190       104    67          37
+93               19.3          5    184       105    69          38
+   Rear.seat.room Luggage.room Weight  Origin                     Make
+1            26.5           11   2705 non-USA            Acura Integra
+2            30.0           15   3560 non-USA             Acura Legend
+3            28.0           14   3375 non-USA                  Audi 90
+4            31.0           17   3405 non-USA                 Audi 100
+5            27.0           13   3640 non-USA                 BMW 535i
+6            28.0           16   2880     USA            Buick Century
+7            30.5           17   3470     USA            Buick LeSabre
+8            30.5           21   4105     USA         Buick Roadmaster
+9            26.5           14   3495     USA            Buick Riviera
+10           35.0           18   3620     USA         Cadillac DeVille
+11           31.0           14   3935     USA         Cadillac Seville
+12           25.0           13   2490     USA       Chevrolet Cavalier
+13           26.0           14   2785     USA        Chevrolet Corsica
+14           25.0           13   3240     USA         Chevrolet Camaro
+15           28.5           16   3195     USA         Chevrolet Lumina
+16           30.5           NA   3715     USA     Chevrolet Lumina_APV
+17           33.5           NA   4025     USA          Chevrolet Astro
+18           29.5           20   3910     USA        Chevrolet Caprice
+19             NA           NA   3380     USA       Chevrolet Corvette
+20           31.0           15   3515     USA        Chrylser Concorde
+21           30.5           14   3085     USA         Chrysler LeBaron
+22           36.0           17   3570     USA        Chrysler Imperial
+23           26.5           11   2270     USA               Dodge Colt
+24           26.5           13   2670     USA             Dodge Shadow
+25           30.5           14   2970     USA             Dodge Spirit
+26           26.5           NA   3705     USA            Dodge Caravan
+27           30.5           16   3080     USA            Dodge Dynasty
+28           20.0           11   3805     USA            Dodge Stealth
+29           26.5           11   2295     USA             Eagle Summit
+30           30.0           15   3490     USA             Eagle Vision
+31           26.0           12   1845     USA             Ford Festiva
+32           28.0           12   2530     USA              Ford Escort
+33           27.5           13   2690     USA               Ford Tempo
+34           24.0           12   2850     USA             Ford Mustang
+35           23.0           18   2710     USA               Ford Probe
+36           30.0           NA   3735     USA            Ford Aerostar
+37           27.5           18   3325     USA              Ford Taurus
+38           30.0           21   3950     USA      Ford Crown_Victoria
+39           27.5           10   1695 non-USA                Geo Metro
+40           24.5           11   2475 non-USA                Geo Storm
+41           23.5            8   2865 non-USA            Honda Prelude
+42           28.0           12   2350 non-USA              Honda Civic
+43           28.0           14   3040 non-USA             Honda Accord
+44           26.0           11   2345 non-USA            Hyundai Excel
+45           28.0           12   2620 non-USA          Hyundai Elantra
+46           23.5            9   2285 non-USA           Hyundai Scoupe
+47           31.0           14   2885 non-USA           Hyundai Sonata
+48           29.0           15   4000 non-USA             Infiniti Q45
+49           27.5           14   3510 non-USA              Lexus ES300
+50           25.0            9   3515 non-USA              Lexus SC300
+51           30.0           19   3695     USA      Lincoln Continental
+52           31.5           22   4055     USA         Lincoln Town_Car
+53           27.0           16   2325 non-USA                Mazda 323
+54           26.5           13   2440 non-USA            Mazda Protege
+55           29.5           14   2970 non-USA                Mazda 626
+56           27.5           NA   3735 non-USA                Mazda MPV
+57             NA           NA   2895 non-USA               Mazda RX-7
+58           26.0           12   2920 non-USA       Mercedes-Benz 190E
+59           27.0           15   3525 non-USA       Mercedes-Benz 300E
+60           19.0            6   2450     USA            Mercury Capri
+61           28.0           15   3610     USA           Mercury Cougar
+62           26.0           11   2295 non-USA        Mitsubishi Mirage
+63           27.5           14   3730 non-USA      Mitsubishi Diamante
+64           26.0           12   2545 non-USA            Nissan Sentra
+65           28.5           14   3050 non-USA            Nissan Altima
+66           27.0           NA   4100 non-USA             Nissan Quest
+67           28.5           14   3200 non-USA            Nissan Maxima
+68           28.0           14   2910     USA       Oldsmobile Achieva
+69           28.0           16   2890     USA Oldsmobile Cutlass_Ciera
+70           30.5           NA   3715     USA    Oldsmobile Silhouette
+71           31.5           17   3470     USA  Oldsmobile Eighty-Eight
+72           24.5            8   2640     USA           Plymouth Laser
+73           25.5           17   2350     USA           Pontiac LeMans
+74           25.0           13   2575     USA          Pontiac Sunbird
+75           25.0           13   3240     USA         Pontiac Firebird
+76           28.5           16   3450     USA       Pontiac Grand_Prix
+77           30.5           18   3495     USA       Pontiac Bonneville
+78           26.5           14   2775 non-USA                 Saab 900
+79           26.5           12   2495     USA                Saturn SL
+80           23.5           10   2045 non-USA             Subaru Justy
+81           27.5           15   2490 non-USA            Subaru Loyale
+82           27.0           14   3085 non-USA            Subaru Legacy
+83           27.5           10   1965 non-USA             Suzuki Swift
+84           24.0           11   2055 non-USA            Toyota Tercel
+85           23.0           13   2950 non-USA            Toyota Celica
+86           28.5           15   3030 non-USA             Toyota Camry
+87           35.0           NA   3785 non-USA            Toyota Previa
+88           26.0           10   2240 non-USA           Volkswagen Fox
+89           34.0           NA   3960 non-USA       Volkswagen Eurovan
+90           31.5           14   2985 non-USA        Volkswagen Passat
+91           26.0           15   2810 non-USA       Volkswagen Corrado
+92           29.5           14   2985 non-USA                Volvo 240
+93           30.0           15   3245 non-USA                Volvo 850
+[1] 285780
+[1] 3072.903
+ [1] non-USA non-USA non-USA non-USA non-USA USA     USA     USA    
+ [9] USA     USA     USA     USA     USA     USA     USA     USA    
+[17] USA     USA     USA     USA     USA     USA     USA     USA    
+[25] USA     USA     USA     USA     USA     USA     USA     USA    
+[33] USA     USA     USA     USA     USA     USA     non-USA non-USA
+[41] non-USA non-USA non-USA non-USA non-USA non-USA non-USA non-USA
+[49] non-USA non-USA USA     USA     non-USA non-USA non-USA non-USA
+[57] non-USA non-USA non-USA USA     USA     non-USA non-USA non-USA
+[65] non-USA non-USA non-USA USA     USA     USA     USA     USA    
+[73] USA     USA     USA     USA     USA     non-USA USA     non-USA
+[81] non-USA non-USA non-USA non-USA non-USA non-USA non-USA non-USA
+[89] non-USA non-USA non-USA non-USA non-USA
+Levels: USA non-USA
+  Manufacturer   Model    Type Min.Price Price Max.Price MPG.city
+1        Acura Integra   Small      12.9  15.9      18.8       25
+2        Acura  Legend Midsize      29.2  33.9      38.7       18
+3         Audi      90 Compact      25.9  29.1      32.3       20
+4         Audi     100 Midsize      30.8  37.7      44.6       19
+5          BMW    535i Midsize      23.7  30.0      36.2       22
+6        Buick Century Midsize      14.2  15.7      17.3       22
+  MPG.highway            AirBags DriveTrain Cylinders EngineSize
+1          31               None      Front         4        1.8
+2          25 Driver & Passenger      Front         6        3.2
+3          26        Driver only      Front         6        2.8
+4          26 Driver & Passenger      Front         6        2.8
+5          30        Driver only       Rear         4        3.5
+6          31        Driver only      Front         4        2.2
+  Horsepower  RPM Rev.per.mile Man.trans.avail Fuel.tank.capacity
+1        140 6300         2890             Yes               13.2
+2        200 5500         2335             Yes               18.0
+3        172 5500         2280             Yes               16.9
+4        172 5500         2535             Yes               21.1
+5        208 5700         2545             Yes               21.1
+6        110 5200         2565              No               16.4
+  Passengers Length Wheelbase Width Turn.circle Rear.seat.room
+1          5    177       102    68          37           26.5
+2          5    195       115    71          38           30.0
+3          5    180       102    67          37           28.0
+4          6    193       106    70          37           31.0
+5          4    186       109    69          39           27.0
+6          6    189       105    69          41           28.0
+  Luggage.room Weight  Origin          Make
+1           11   2705 non-USA Acura Integra
+2           15   3560 non-USA  Acura Legend
+3           14   3375 non-USA       Audi 90
+4           17   3405 non-USA      Audi 100
+5           13   3640 non-USA      BMW 535i
+6           16   2880     USA Buick Century
+[1] 4
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+   empno   ename   addno
+1  10001    Toom 780-600
+2  10002     Kim 780-600
+3  10003    Yoon 780-620
+4  10004 Jongsik 780-630
+5  10005     Jim 780-620
+6  10006   Bruce 780-620
+7  10007   Jones 780-630
+8  10008   Blake 780-600
+9  10009  Martin 780-600
+10 10010   James 780-630
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+[1] "d:/R_edu_201909"
+[1]  8 10 12 11 13 15 17
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+[1] "D:/R_edu_201909"
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+   empno   ename   addno
+1  10001    Toom 780-600
+2  10002     Kim 780-600
+3  10003    Yoon 780-620
+4  10004 Jongsik 780-630
+5  10005     Jim 780-620
+6  10006   Bruce 780-620
+7  10007   Jones 780-630
+8  10008   Blake 780-600
+9  10009  Martin 780-600
+10 10010   James 780-630
+[1] "d:/R_edu_201909"
+[1] "d:/R_edu_201909"
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+[1] "d:/r_class"
+[1] "d:/r_class"
+   empno   ename deptno    phone
+1  10001    Toom     11 523-4566
+2  10002     Kim     11 523-4567
+3  10003    Yoon     30 523-4568
+4  10004 Jongsik     20 523-4569
+5  10005     Jim     30 523-4570
+6  10006   Bruce     30 523-4571
+7  10007   Jones     20 523-4572
+8  10008   Blake     11 523-4573
+9  10009  Martin     11 523-4574
+10 10010   James     20 523-4575
+[1] "d:/r_class"
+[1] "d:/r_class"
+[1] "d:/r_class"
+[1] "d:/r_class"
+[1] "d:/r_class"
+[1] "d:/r_class"

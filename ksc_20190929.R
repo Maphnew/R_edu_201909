@@ -9,7 +9,7 @@
 
  
 getwd()
-setwd("d:/r_class")
+setwd("d:/R_edu_201909")
 
 
 
@@ -1206,13 +1206,15 @@ lst1
 # 1)
 library(MASS)
 ?Cars93
+str(Cars93)
+Cars93$MPG.city
 
-
-
+MPG30Cars93 <- subset(Cars93, select=Model,subset=(MPG.city>=30))
+MPG30Cars93
 
 # 2)
-newCars93<-
-  
+newCars93<- subset(Cars93, select=c(Manufacturer, Model, Type, subset=c(MPG.highway > median(MPG.highway))
+ 
 newCars93
 
 #열이름으로 열삭제
@@ -1345,12 +1347,12 @@ merg2
 
 #empno 변수를 중심으로 데이터 프레임 병합
 
-merg <-  
+merg <-  merge(merg1, merg2, by="empno")
 merg
 
 #enmae.y 가 중복되어 삭제
 
-merg<- 
+merg<- subset(merg,select=-ename.y)
 merg
 
 
@@ -1411,16 +1413,16 @@ dfm
 #group<-split(v,f)                           #벡터를 요인에 따라 분할
 #group <-unstack(data.frame(v,f))            #벡터가 동일한 길이인 경우 리스트를 데이터 프레임으로 변환해줌
 
-group<-
+group<-split(v,f)
 group
 
-group<-
+group<-split(w,f)
 group
 
-group<-
+group<-unstack(data.frame(v,f))
 group
 
-group<-
+group<-unstack(data.frame(v,w))
 group
 
 
@@ -1429,17 +1431,22 @@ head(Cars93)
                                              # Origin={USA,non-USA}, MPG.city는 도시에서의 연비
 
 
-g<-
+g<-split(Cars93$MPG.city, Cars93$Origin)
 g
 
 
                                              #MPG 평균 계산
+mean(g[[1]])
+mean(g[["USA"]])
+mean(g[[2]])
+mean(g[["non-USA"]])
+
 
 
 ### 리스트의 각 원소에 함수 적용   #####
 
-#list<-lapply(l,func)
-#vector<-sapply(l,func)
+#list<-lapply(l,func) 
+#vector<-sapply(l,func) 
 
 
 s1<-c(91,87,95,96,89,87,86,85,84,86,88,92,91,93,92,92,91,93,94,94,95,96,96,96,99,95,98,97,92,86,84,89,87,86,89,85,84)
@@ -1452,23 +1459,26 @@ length(s2)
 length(s3)
 length(s4)
 
-scores<-
+scores<-list(Korean=s1, English=s2, Math=s3, Chinese=s4)
 scores
 
+# lapply 결과를 리스트 형태로 반환
+# sapply 결과를 벡터 또는 행렬 형태롤 반환
 
+lapply(scores,length) 
+sapply(scores,length)
+sapply(scores,mean)
+sapply(scores,sd)
+sapply(scores,range)
 
-
-
-
-
-
-
-
-ttest<-
+ttest<-lapply(scores,t.test)
 ttest
- 
 
+sapply(ttest,function(t) t$conf.int)
 
+# conf.int: 신뢰구간? 
+
+### 2019-09-30 10:31
 #####  모든 행에 함수 적용하기   #####
 
 ##  results<-apply(met, 1, func)
@@ -1482,14 +1492,15 @@ m1
 
 #apply함수는 행렬의 처리를 위해 만들어졌고 1-행,2-열을 func으로 처리
 
-
+apply(m1, 1, mean)
+apply(m1, 2, mean)
 
 #lapply는 리스트 형태에서 적용할 수 있으므로 행렬의 모든 원소를 리스트로 인식함
-
+lapply(m1,mean)
   
 
 #sapply는 모든 행렬의 원소를 벡터로 인식하여 반환함
-
+sapply(m1, mean)
  
 
 
@@ -1499,21 +1510,21 @@ test
 
 #데이터 프레임에서 apply를 적용하려면 데이터가 모두 숫자나 문자로 동질적인 경우만 적용가능
 
-
-
+apply(test,1,mean)
+apply(test,2,mean)
 
 #데이터 프레임의 각 열들의 클레스를 확인할 때 활용 가능
 
- 
+sapply(test,class) 
 
 
 #데이터 프레임에서 열을 기준으로만 func을 적용할 때 사용가능, lapply는 리스트로 값을 반환
 
- 
+lapply(test,mean)
 
 #데이터 프레임에서 열을 기준으로만 func을 적용할 때 사용가능, sapply는 벡터로 값을 반환
 
- 
+sapply(test,mean) 
 
 
 
@@ -1524,111 +1535,108 @@ test
 # tapply(x,f,func)               # x는 벡터, f는 집단 분류 요인, func는 함수
 
 Cars93
-attach(Cars93)
-
+attach(Cars93) # Cars93$Weight 따위 필요없이 Weight 사용가능
+str(Cars93)
 sum(Weight)
 mean(Weight)
 
 Origin
-
-                                     # Cars93 데이터 프레임에서 무게를 생산지 구분별로 합계
-                                     # Cars93 데이터 프레임에서 무게를 생산지 구분별로 평균
-                                     # Cars93 데이터 프레임에서 무게의 객수를 생산지 구분별로 카운트
-
+                                     
+tapply(Weight,Origin,sum)# Cars93 데이터 프레임에서 무게를 생산지 구분별로 합계
+tapply(Weight,Origin,mean)# Cars93 데이터 프레임에서 무게를 생산지 구분별로 평균
+tapply(Weight,Origin,length)# Cars93 데이터 프레임에서 무게의 객수를 생산지 구분별로 카운트
 
 ###### 행 집단에 함수 적용하기    ###############
 ###############################################
 ###############################################
 library(MASS)
-                                    # Cars93 데이터 프레임에서 생산지구분별로 요약
+by(Cars93, Origin, summary)
+
+# Cars93 데이터 프레임에서 생산지구분별로 요약
 
 head(Cars93)
 attach(Cars93)
-model<-
+model<-by(Cars93, Origin, function(df) lm(Price~Weight+EngineSize,data=df))
 model
+summary(model[[2]])
 
-
-
+lapply(model, confint)
 
 # 함수를 생성
 
 
-
-
-
-
-
-
-
-
-
+2019-09-30 10:56
 #문자열다루기
 
 #문자열 길이 알아내기
 
-
-
+nchar("Tom")
+nchar("My name is Tom")
 
 n<-c("my", "name", "is", "Tom")
 length(n)
 
 #문자열 연결하기
 
-
-
+paste("My","name","is","Tom")
+paste("The pi is approximatly", pi)
 name<-c("Tom", "Moe", "Larry")
-
-
+paste(name, "loves me.")
+paste(name,"loves me", collapse=", and ")
 
 #하위문자열 추출하기
-
-
+substr("Statistics",3,4)
+substr("Statistics",1,3) # substr(str, start, stop)
 
 #구분자로 문자열 분할하기
-
-
-
-
+path<-"/home/dataedu/basic/R"
+pa <- strsplit(path,"/")
+str(pa)
+pa[[1]][2]
 
 
 #하위 문자열 대체하기
 s<-"Curly is the smart one. Curly is funny, too."
 
-
-
+sub("Curly", "Tom", s) # first one
+gsub("Curly", "Tom", s) # globaly
 
 #문자열의 모든 쌍별 조합 만들기
-location<-c("Seoul","Pusan","Inchon")
+location<-c("Seoul","Pusan","Incheon")
 treatment<-c("T1","T2","T3")
-
+outer(location, treatment, paste, sep="-")
 
 #현재 날짜 알아내기
 
-
+Sys.Date()
 
 #문자열을 날짜로 변환하기
 
-
+as.Date(Sys.Date())
+as.Date("10/06/2019", format="%m/%d/%Y")
 
 
 #날짜를 문자열로 변환하기
 
-
-
+as.character(Sys.Date())
+format(Sys.Date(), format="%m/%d/%Y")
 
 #날짜 일부 추출하기
-d<-
-p<-
-
-
-
+d<-as.Date(Sys.Date())
+p<-as.POSIXlt(d)
+p$mday
+p$year
+p$year+1900
 
 #날짜로 수열 생성하기
-start<-
-end<-
+start<-as.Date("2019-09-28")
+end<-as.Date("2019-10-07")
 countdown<-seq(from=start, to=end, by=1)
 countdown
+length(countdown)
 
-
+seq(from=start, by="month", length.out=12)
+seq(from=start, by="3 months", length.out=5)
+seq(from=start, by="year", length.out=5)
 
 
