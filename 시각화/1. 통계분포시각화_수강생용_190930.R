@@ -132,21 +132,21 @@ x11()
 par(mfrow = c(2, 2))   
 plot(dose, drugA, type="b", lty=2, pch=17)
 
- 
+par(font.lab=4, cex.lab=2)
 #
 #font.lab, cex.lab --> 1.5배 크기의 이탤릭체 xy축 레이블
-
+plot(dose, drugA, type="b", lty=2, pch=17)
 
 
 #windowsFontsd함수를 활용하면 window 내장 폰트를 불러와 활용이 가능함.
-
-
-
-
-
+windowsFonts(
+	A=windowsFont("Arial Black"),
+	B=windowsFont("Bookman Old Style"),
+	C=windowsFont("Comic Sans MS")
+)
+par(family="A")
 #->  Arial Black 폰트 지정
-
-
+plot(dose, drugA, type="b", lty=2, pch=17)
 
 # pch : 점그래프의 점의 모양을 선택
 # lty : 선의 종류를 선택
@@ -159,13 +159,14 @@ plot(dose, drugA, type="b", lty=2, pch=17)
 
 x11()
 
+par(pin=c(4,3), mai=c(1,.5,1,2))
 # pin - 인치를 설정, 4인치의 넓이와 3인치의 높이
 # mai - 여백지정(inches), 아래, 왼쪽, 위, 오른쪽 순서로 여백 지정 가능
 
 plot(dose, drugA, type="b", lty=3, lwd=2, pch=15, cex=2)
 
 x11()
-
+par(pin=c(4,3), mar=c(5,4,4,2)+1)
 #mar - 여백지정(lines), 아래, 왼쪽, 위, 오른쪽 순서로 여백 지정 가능
 
 plot(dose, drugA, type="b", lty=3, lwd=2, pch=15, cex=2)
@@ -175,15 +176,14 @@ dose <- c(20, 30, 40, 45, 60)
 drugA <- c(16, 20, 27, 40, 60)
 drugB <- c(15, 18, 25, 31, 40)
 
-                              # 1 x 2 pictures on one plot
+par(mfrow=c(1,2))          # 1 x 2 pictures on one plot
 
-                              # 그래프의 넓이 2인치, 높이는 3인치 
-                              #선의 굵기 2, 점의 크기 1.5
-                                #축의 크기 75%, 축의 폰트는 이텔릭체 
+par(pin=c(2,3))             # 그래프의 넓이 2인치, 높이는 3인치 
+par(lwd=2, cex=1.5)              #선의 굵기 2, 점의 크기 1.5
+par(cex.axis=0.75, font.axis=3)       #축의 크기 75%, 축의 폰트는 이텔릭체 
 
-
-
-
+plot(dose,drugA,type="b",pch=19,lty=2,col="red")
+plot(dose,drugB,type="b",pch=23,lty=6,col="blue", bg="green")
 
 
 #################################################
@@ -196,8 +196,9 @@ drugB <- c(15, 18, 25, 31, 40)
 x11()
 par(mfrow=c(1,2))
 
-
-
+plot(dose, drugA, type="b", col="green", lty=2, pch=2, lwd=2,
+	main="Main", sub="Sub", xlab="Dosage", ylab="Drug Response",
+	xlim=c(0,60), ylim=c(0,70))
 
                                             #main: 본제목
                                             #sub : 부제목
@@ -211,12 +212,29 @@ par(mfrow=c(1,2))
 #  -> 빨간 제목과 파란 소제목, 그리고 기본 텍스트 크기보다 25% 작은 
 #     녹색의 x와 y축의 레이블을 생성
 
+plot(
+	dose, 
+	drugB, t
+	ype="b", 
+	col="red", 
+	lty=2, 
+	pch=2, 
+	lwd=2,
+	main="Main", 
+	col.main="blue", 
+	sub="Sub", 
+	col.sub="orange", 
+	xlab="Dosage", 
+	ylab="Drug Response", 
+	col.lab="gray", 
+	cex.lab=0.75,
+	xlim=c(0,60), 
+	ylim=c(0,70)
+)
 
-
-
-                                                             #col.main : 본제목 글자의 색변경
-                                                             #col.sub : 부제목 글자의 색변경
-                                                                         #col.lab : x, y축 라벨 글자의 색변경
+                        #col.main : 본제목 글자의 색변경
+                        #col.sub : 부제목 글자의 색변경
+                        #col.lab : x, y축 라벨 글자의 색변경
      
 
 
@@ -234,39 +252,36 @@ x
 y
 z
 
-
-
+par(mar=c(5,4,4,8)+0.1)
 
 #-yaxt는 y 축을 보이게 하는 인자,ylab=""는 y 레이블을 보이지 않게 하는 인자 
-
+plot(x, y, type="b", pch=21,
+	col="red", ylab="", yaxt="n", lty=3)
 
 #- line 함수를통해 새로운 선을 그림
+lines(x,z,type="b",pch=22,col="blue",lty=2)
 
-
+axis(side=2, at=y, labels=y, col.axis="red", las=2)
+axis(side=4, at=z, labels=round(z,digits=2), col.axis="blue", las=2,
+	cex.axis=0.7, tck=-0.01)
 #- side : 축을 어느위치에 그릴지를 정함, 1:아래, 2:왼쪽, 3:위, 4:오른쪽
 #- at : 어느 변수의 축을 맞춰서 그릴지를 정함, y값이 1~10값이고 point가 찍힌 지점에 맞게 axis를 그림
 #- label : 축의 label을 나타냄. y값 1~10값을 나타냄
 #- col.axis : 축의 색을 나타냄
 #- las : 축의 글자 방향을 나타냄, 2: Horizontal, 3: Vertical
-
-
-
 #- cex.axis : 축의 글자 크기
 #- tck : 축의 눈금줄의 길이
 
-
+mtext("y=10/x", side=4, line=2, cex.lab=1, las=2, col="blue")
+title("An example of Creative Axes", xlab="Xvalues", ylab="Y=X")
 #- mtext 함수를 이용해 그래프에 글자를 추가할 수 있음
 #- line : 글자의 위치를 나타냄
-
-
-
-
 
 #보조 눈금 그리기
 install.packages("Hmisc")
 library(Hmisc)
 
-
+minor.tick(nx=2, ny=3, tick.ratio=0.5)
 #- minor.tick를 통해서 보조눈금을 그릴 수 있음.
 #- nx는 x축, ny는 y축이며, tick.ratio로 주눈금과 보조눈금의 길이 비율을 나타냄
 
@@ -283,10 +298,10 @@ par(mar=c(5,4,4,8)+0.1)
 plot(x, y, type="b", pch=21, col="red",yaxt="n",lty=3)
 
 
-
+abline(h=c(1,5,7))
 # h : 가로 실선을 y=1,5,7에 추가
 
-
+abline(v=seq(1,10,2), lty=2, col="blue")
 # v : x = 1, 3, 5, 7, 9에 파란 세로 점선을 추가
 
 
@@ -317,7 +332,8 @@ install.packages("Hmisc")
 library(Hmisc)
 minor.tick(nx=5, ny=5, tick.ratio=0.5)
 
-
+legend("topleft", inset=0.01, title="Drug Type", c("A", "B"),
+	lty=c(1,3), pch=c(15,17), col=c("red", "blue"))
 
 #- "topleft"는 상단 왼쪽에 지정하겠다는 뜻임. 
 #- inset : 범례가 위치하는 곳에 일정 부분을 띄워서 겹치지 않게 출력하게함.
@@ -338,9 +354,7 @@ plot(wt, mpg,
      pch=18, col="blue")
 abline(lm(mpg~wt))
 
-
-
-
+text(wt, mpg, row.names(mtcars), cex=0.6, pos=4, col="red")
 
 detach(mtcars)
 
@@ -348,14 +362,14 @@ detach(mtcars)
 ############################################################
 #     도표내에 글자를 표시하기   (실습)
 ############################################################
+### 2019-09-30 16:43
 
 x11()
 par(cex=1.5)
 plot(1:7,1:7,type="n")    #type="n"은 그래프에서 표시가 되지 않음
-
-
-
-
+text(5,6,"aaaaaaaaaaaaaa")
+text(4,4,family="mono","bbbbbbbbbbbbbbbb")
+text(5,5,family="serif","cccccccccccccccccccccccccccccccc")
 
 
 
@@ -365,38 +379,31 @@ plot(1:7,1:7,type="n")    #type="n"은 그래프에서 표시가 되지 않음
 x11()
 attach(mtcars)
 opar <- par(no.readonly=TRUE)
-
-
-
-
-
-
+par(mfrow=c(1,4))
+plot(wt,mpg)
+plot(wt,disp)
+hist(wt)
+boxplot(wt)
 par(opar)
 detach(mtcars)
-
-
-
+par(opar)
+detach(mtcars)
 
 attach(mtcars)
 opar <- par(no.readonly=TRUE)
-
-
-
-
-
+par(mfrow=c(3,1))
+hist(wt)
+hist(mpg)
+hist(disp)
 par(opar)
 detach(mtcars)
 
-
-
-
-
 attach(mtcars)
-
+layout(matrix(c(1,1,2,3), 2,2,byrow=TRUE))
 #- layout : 한 창에 그래프를 여러개 나타낼 수 있게함.
-
-
-
+hist(wt)
+hist(mpg)
+hist(disp)
 detach(mtcars)
 
 x11()
@@ -416,18 +423,19 @@ detach(mtcars)
 ######################################################
 
 x11()
-
+par(fig=c(0,0.8,0,0.8))
 #- fig : x축은 0~0.8, y축은 0~0.8로 지정
 
 attach(mtcars)
+plot(wt,mpg,xlab="Miles per Gallon", ylab="Car Weight")
 
+par(fig=c(0,0.8,0.55,1),new=TRUE)
+boxplot(wt,horizontal=TRUE, axes=FALSE)
 
+par(fig=c(0.65,1,0,0.8),new=TRUE)
+boxplot(mpg, axes=FALSE)
 
-
-
-
-
-
+mtext("Enhanced Scatterplot", side=3, outer=TRUE, line=-3)
 detach(mtcars)
 
 
