@@ -829,11 +829,18 @@ detach(mtcars)
 x11()
 # 기본 Box 그래프 그리기
 par(mfrow=c(1,1))
+boxplot(mtcars$mpg)
 
-
-
+mtcars$cyl
 # 카테고리별 Box 그래프
-
+boxplot(
+	mpg~cyl,
+	data=mtcars,
+	main="차량 연비 비교",
+	xlab="실린더 수",
+	ylab="Miles/Gallon"
+)
+?boxplot
 
 
 
@@ -864,22 +871,20 @@ par(mfrow=c(1,1))
 ######################################################
 
 #cyl.f 변수 추가하기
-
+mtcars$cyl.f <- factor(mtcars$cyl,levels=c(4,6,8),labels=c("4기통","6기통","8기통"))
 
 
 #am.f 변수 추가하기
+mtcars$am.f <- factor(mtcars$am, levels=c(0,1), labels=c("자동","수동"))
 
-
-
-
-
+mtcars
                                  #mpg 값을 am.f와 cyl.f 변수에 따라 박스 그래프 생성
-
-
-
-
-
-
+boxplot(mpg ~am.f*cyl.f,
+	data=mtcars,
+	col=c("gold","darkgreen"), 
+	varwidth=TRUE,
+	main="수동/자동 변속기 구분에 따른 분포",
+	xlab="변속기 구분")
 
 ######################################################
 #        기본 박스 수염 그래프 확장하기 
@@ -928,17 +933,24 @@ title("바이올린 그래프 - 실린더별 연비")
 
 
                                         # mpg값을 기준으로 정렬
+x <- mtcars[order(mtcars$mpg), ]
 x
 
+x$cyl <- factor(x$cyl, levels=c(4,6,8), labels=c("4기통","6기통","8기통"))
 
-
-
-
-
-
+x$color[x$cyl=="4기통"] <- "red"
+x$color[x$cyl=="6기통"] <- "blue"
+x$color[x$cyl=="8기통"] <- "darkgreen"
 
 #- cyl 값에 따른 색부여
-
+dotchart(x$mpg,
+	labels =row.names(x),
+	cex=.8,
+	groups=x$cyl,
+	gcolor = "black",
+	color = x$color, pch=19,
+	main="차량 모델별 연비 - 실린더 구분",
+	xlab="Miles/Gallon")
 
 
 
