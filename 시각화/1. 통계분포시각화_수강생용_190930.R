@@ -459,20 +459,27 @@ install.packages("vioplot")   # 바이올린 그래프
 # --  vcd 패키지 로딩하고 데이터셋 보기
 library(vcd)
 Arthritis
+?Arthritis
+str(Arthritis)
 # --  Bar Plot을 그리기 위한 집계 데이터셋 만들고 확인하기
-
+counts<-table(Arthritis$Improved)
 counts
 
 # --  기본 Bar Plot 그리기( 세로 )
 x11()
-
+barplot(counts,
+	main="기본 바 플롯",
+	xlab="약효 구분", ylab="빈도수")
 
 
 
 
 # --  가로 Bar Plot 그리기( 가로 )
 x11()
-
+barplot(counts,
+	main="기본 바 플롯",
+	xlab="약효 구분", ylab="빈도수",
+	horiz=TRUE)
 
 
 
@@ -484,41 +491,80 @@ x11()
 
 
 
+############## pie test ##################
 
+n<-10
+mycolors<-rainbow(n)       #RGB 컬러명이 나옴
+mycolors
+x11
+pie(
+	counts, 
+	labels=rownames(counts), 
+	col=c("red","orange","yellow"),
+)
 
-
+###############################################
 
 ##########################################################
 #   누적 막대 그래프 
 ##########################################################
 
 # Stacked Bar : 누적
-
+counts2<-table(Arthritis$Improved, Arthritis$Treatment)
 counts2
+### 범주형 자료를 그릴 때는 table을 사용함.
+x11
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(1,2))
 
 
 
+barplot(counts2,
+	main="Stacked Bar plot",
+	xlab="처방구분", 
+	ylab="빈도수",
+	col=c("red","orange","yellow"),
+	ylim=c(0,60),
+	legend=rownames(counts))
 
 
-
- 
 
 # 막대 그래프 나누어서 표기
-x11()
+barplot(counts2,
+	main="Stacked Bar plot",
+	xlab="처방구분", 
+	ylab="빈도수",
+	col=c("red","orange","yellow"),
+	legend=rownames(counts),
+	beside=TRUE)
+
+                                  # beside=TRUE로 막대그래프를 나누어서 볼 수 있음
 
 
-
-
-
-                                                      # beside=TRUE로 막대그래프를 나누어서 볼 수 있음
-
-
-
+par(opar)
 
 
 #실습
 #1. 색상을 변경해보세요.
+x11
+barplot(counts2,
+	main="Stacked Bar plot",
+	xlab="처방구분", 
+	ylab="빈도수",
+	col=c("red","black","yellow"),
+	legend=rownames(counts),
+	beside=TRUE)
+
 #2. Y축의 좌표값 기준을 변경해서 범례가 겹치지 않도록 하세요.
+x11
+barplot(counts2,
+	main="Stacked Bar plot",
+	xlab="처방구분", 
+	ylab="빈도수",
+	col=mycolors,
+	legend=rownames(counts2),
+	ylim=c(0,30),
+	beside=TRUE)
 
 #- 힌트
 # n <- 10
@@ -532,10 +578,17 @@ x11()
 
 #- 정답
 x11()
+n <- 3
+mycolors <- heat.colors(n)
 
-
-
-
+barplot(counts2,
+	main="Stacked Bar plot",
+	xlab="처방구분", 
+	ylab="빈도수",
+	col=mycolors,
+	legend=rownames(counts2),
+	ylim=c(0,30),
+	beside=TRUE)
 
 
 
