@@ -609,14 +609,19 @@ states <- data.frame(state.region, state.x77)
 summary(states)
 
 states[,c(1,2)]   #state.region과 Population만 추출
+states[c(1,2)]
 
 #- 집계함수(aggregate)로 states의 Illiteracy의 값을 state.region별로 평균을 구함
-mean_f
+mean_f <- aggregate(states$Illiteracy,
+				by=list(state.region),
+				FUN=mean)
 
 # 정렬하기
-                                    #order 함수로 정렬, decreasing=T이면 내림차순으로 정렬렬
-mean_f
+                                    #order 함수로 정렬, decreasing=T이면 내림차순으로 정렬
+mean_f <- mean_f[order(mean_f$x), ]
 
+mean_f
+(mean_f[,2])
 
 # Bar plot 그리기
 x11()
@@ -653,7 +658,7 @@ Arthritis
 
 
 attach(Arthritis)
-
+counts2 <- table(Treatment, Improved)
 
 #-spine : vcd 패키지에 포함된 함수로 색깔이 구분안되는 단점이 있음
 
@@ -673,27 +678,39 @@ slices <- c(10, 12,4, 16, 8)
 lbls <- c("미국", "영국", "호주", "독일", "한국")  
 
 # 기본 파이 차트 그리기
-
+pie(slices, labels=lbls, main="pie!")
 
 
 # 라벨 변경하기 : 100% 비율로( 카테고리 이름 + XX% )
-
+pct<-round(slices/sum(slices)*100)
+lbls2 <- paste(lbls, " ", pct,"%", sep="")
 
 #- paste : 글자를 붙여주는 함수
 
+pie(slices, 
+	labels=lbls2,
+	col=rainbow(length(lbls2)),
+	main="pie pct")
 
 
 # 3차원 파이 차트 그리기
 library( plotrix )
-
+pie3D(slices,
+	labels=lbls2,
+	main="3D")
 
 # 라벨 변경하기 : 카테고리 이름 + 빈도수
+mytable <- table(state.region)
 
+lbls3 <- paste(names(mytable), "\n", mytable , sep="")
+pie(mytable, label=lbls3, main="pie usa")
 
+##### 라벨 변경하기 : 100% 비율로( 카테고리 이름 + XX% )
+pct2<-round(mytable/sum(mytable)*100)
+lbls4 <- paste(pct2,"%", sep="")
 
-
-
-
+lbls3 <- paste(names(mytable), "\n", lbls4 , sep="")
+pie(mytable, label=lbls3, main="pie usa")
 
 ######################################################
 #         부채 그래프 만들기 
@@ -717,17 +734,19 @@ par(mfrow=c(2,2))
 summary(mtcars)
 
 #1번째 : 기본 Histogram 그리기
-
+hist(mtcars$mpg)
 
 #2번째 : 색상을 추가하고, 12 단계로 구간을 분할 합니다.
-
-
-
+hist(mtcars$mpg,
+	breaks=12,
+	col="red",
+	xlab="MPG/Miles Per Gallon",
+	ylab="빈도수",
+	main="Hist MPG"
+)
 #- break : 구간을 나누는 인자
 
 #3번째 : Rug Plot과 Density Curve
-
-
 
 
 
@@ -763,18 +782,16 @@ x11()
 par(mfrow=c(2,1))
 
 # 1번째 : 기본 밀도 그래프 그리기
-
-
+d <- density(mtcars$mpg)
+plot(d)
 
 # 2번째 : Area Line Chart + rug 띠 표시
-
+polygon(d, col="green", border="blue",lwd=3)
 #- col : 그래프 내부의 색을 지정
 #- border : 그래프 외부 선의 색 지정
+rug(mtcars$mpg,col="brown",lwd=1.5)
 
-
-
-
-
+?rug
 ######################################################
 #        밀도 비교 그래프(카탈로그별 )비교 
 ######################################################
@@ -786,19 +803,20 @@ attach(mtcars)
 par(mfrow=c(1,1))
 
 # 실린더별(4,6,8기통) 밀도 비교 그래프
-
-
-
-
+cyl.f <- factor(
+	cyl, 
+	levels=c(4,6,8),
+	labels=c("4기통","6기통","8기통"))
+sm.density.compare(mpg,cyl,xlab="MPG")
 
 #- mpg에 따른 cyl의 밀도그래프를 그림
 
 title(main="실린더별 MPG 분포")
-
+colfill<-c(2:(1+length(levels(cyl.f))))
 #cyl 범주별 색을 추가하기 위해 colfill추가
 
 # 범례를 그리는데 마우스로 클릭한 곳에 
-
+legend(locator(1), levels(cyl.f), fill=colfill)
 detach(mtcars)
 
 
