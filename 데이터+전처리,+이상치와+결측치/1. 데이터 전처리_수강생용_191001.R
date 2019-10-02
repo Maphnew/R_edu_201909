@@ -568,11 +568,14 @@ head(Fruits)
 #      measure.vars = 변수화할 열 이름)
 
 #ex) airquality 데이터의 id(Month, Day)를 기준으로 데이터를 변형
+install.packages("reshape2")
+library(reshape2)
+install.packages("reshape")
 library(reshape)
 
 head(airquality)
 
-melt_1 <-  		
+melt_1 <- melt(airquality, id=c("Month", "Day"), na.rm=T)
 #na.rm은 결측치가 존재하는 행을 삭제한 뒤, 함수에 적용하는 지의 여부를 물음
 head(melt_1)
 
@@ -582,6 +585,7 @@ head(melt_1)
 #      fun)			#해당 변수에 적용할 함수
 
 #ex) melt 예제에서 melt_1데이터를 cast를 활용해 변형
+cast(melt_1, Day~Month, subset=(variable=="Ozone"))
                                      	#세로축에는 Day, 가로축에는 Month, 마지막으로 variable별로 값을 넣어서 나타냄
 
                                      		#variable이 Ozone인 데이터만 뽑아내 나타냄

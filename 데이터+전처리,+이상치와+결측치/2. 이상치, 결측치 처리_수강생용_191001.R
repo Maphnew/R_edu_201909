@@ -7,16 +7,16 @@
 
 head(airquality)	#상위 6개만 봐도 5행, 6행에 NA가 존재함을 확인
 
-                             	#apply 함수를 통해 열별 결측치의 개수를 확인(TRUE는 1이므로)
-
+is.na(airquality)  	#apply 함수를 통해 열별 결측치의 개수를 확인(TRUE는 1이므로)
+apply(is.na(airquality),2,sum) # 2: 열 
 
 # 2) complete.cases() : 그 행에 결측치가 존재하면 FALSE값을 반환
 
 #ex) airquality 데이터에서 NA가 있는 행을 complete.cases를 통해 확인하기
 
-                         			#벡터형태로 FALSE값을 출력
+complete.cases(airquality)		#벡터형태로 FALSE값을 출력
 
-                                     	#TRUE값을 출력하기에 !를 붙이면 결측치가 존재하는 FALSE값이 TRUE가 되어 출력
+airquality[!complete.cases(airquality),] #TRUE값을 출력하기에 !를 붙이면 결측치가 존재하는 FALSE값이 TRUE가 되어 출력
 
 ## 나. 결측치 처리
 
@@ -24,7 +24,7 @@ head(airquality)	#상위 6개만 봐도 5행, 6행에 NA가 존재함을 확인
 #ex) airquality 데이터에서 NA가 있는 행에 대체값 넣기
 
 tail(airquality)				#150번째 행의 Ozone 농도를 발견하여 대체값을 넣어야 됨
-                               	#airquality 데이터의 150번째 행에서 Ozone 변수값에 28을 대체값으로 대입
+airquality[150,1] <- 28	#airquality 데이터의 150번째 행에서 Ozone 변수값에 28을 대체값으로 대입
 
 tail(airquality)
 
@@ -33,7 +33,13 @@ tail(airquality)
 
 #ex) airquality 데이터의 Ozone열의 평균값 구하기
                               	#Ozone의 데이터에 NA가 있어 평균을 구하면 NA가 나타남
+mean(airquality$Ozone, na.rm=FALSE)
                               	#Ozone의 데이터에서 NA 값을 제외한 값들의 평균 값을 구함
+mean(airquality$Ozone, na.rm=TRUE)
+
+
+
+
 
 # 3) na.omit : na.omit은 결측값이 있는 행을 제외한 결과를 보여줌.(하나의 행 중 하나의 NA만 있어도 제외)
 
@@ -44,14 +50,16 @@ nrow(a)				#airquality의 행은 총 153개
 
 apply(is.na(a),2,sum)	#airqulaity 데이터에서 NA는 Ozone과 Solar.R에 있음을 알 수 있다.
 
-                                    	#Ozone과 Solar.R 중 NA가 하나라도 있으면 1, 아니면 0
+a$na<-ifelse(is.na(a$Ozone)==TRUE | is.na(a$Solar.R)==TRUE, 1, 0)  	
+#Ozone과 Solar.R 중 NA가 하나라도 있으면 1, 아니면 0
 
-      		#Ozone과 Solar.R 중 하나라도 NA가 있는 행은 42개
+sum(a$na)
+#Ozone과 Solar.R 중 하나라도 NA가 있는 행은 42개
 
-            	#na가 1이 아닌 행만 선택하여 aa에 저장
+aa<-a[a$na!=1,]   	#na가 1이 아닌 행만 선택하여 aa에 저장
 nrow(aa)		#111개의 행이 있음을 확인
 
-                  	#위와달리 na.omit를 사용하여 행을 확인
+b<-na.omit(airquality)  	#위와달리 na.omit를 사용하여 행을 확인
 nrow(b)			#111개의 행이 있음을 확인
 b
 
