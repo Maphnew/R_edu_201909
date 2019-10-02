@@ -222,22 +222,22 @@ id_number
 # ex 1) id 칼럼을 기준으로 공통된 값이 있는 경우에만 두 데이터(id_name, id_number)를 병합
 #      (데이터베이스의 Inner Join에 해당)
 
- 
+merge(id_name, id_number, by= 'id')
 
 # ex 2) id 칼럼을 기준으로 공통된 값의 유무에 관계없이 모든 행을 병합
 #      (데이터베이스의 Outer Join에 해당)
 
- 
+merge(id_name, id_number, by= 'id', all=T)
 
 # ex 3) id 칼럼을 기준으로 두 데이터(id_name, id_number)를 병합하는데 
 #       기준칼럼에 공통 값이 없는 경우에는 id_name 데이터를 기준으로 병합 (데이터베이스의 Left Outer Join에 해당)
 
- 
+merge(id_name, id_number, by= 'id', all.x=T)
 
 # ex 4) id 칼럼을 기준으로 두 데이터(id_name, id_number)를 병합하는데 
 #       기준칼럼에 공통 값이 없는 경우에는 id_number 데이터를 기준으로 병합 (데이터베이스의 Right Outer Join에 해당)
 
- 
+merge(id_name, id_number, by= 'id', all.y=T)
 
 
 ## 나. 요약
@@ -249,10 +249,10 @@ id_number
 #data : 연산을 수행할 데이터프레임
 
 #ex 1) iris 데이터에서 종별 Sepal.Width의 평균구하기
- 
+aggregate(Sepal.Width~Species, iris, mean)
 
 #ex 2) iris 데이터에서 종별 Sepal.Width, Petal.Width 의 평균구하기
- 
+aggregate(cbind(Sepal.Width, Petal.Width)~Species, iris, mean) 
 
 # 2) table : 범주형 변수에 대해서 각 범주별 도수를 알고자 도수분포표를 만들기 위해서는 table 함수를 이용
 #		 또한, 이원분할표도 table 함수를 통해 간단하게 생성
@@ -270,10 +270,11 @@ Titanic<-as.data.frame(Titanic)   # as.data.frame() : 객체를 데이터프레임으로 변
 str(Titanic)                      # 데이터 구조가 데이터프레임으로 변환되었음을 확인 가능
 
 # table함수를 이용하여 범주형 변수 Class에 대한 도수분포표를 생성
- 
+table(Titanic$Class)
+table(Titanic$Survived)
 
 #ex 2) 내장데이터 Titanic에서 승객의 생존여부를 의미하는 Survived 변수와 Class 변수에 관계를 살펴보기 위한 표 생성
- 
+table(Titanic$Class, Titanic$Survived)
 
 # 3) prop.table : 범주형 변수에 대해서 각 범주별 도수를 알고자 도수분포표를 만들기 위해서는 table 함수를 이용
 
@@ -285,11 +286,9 @@ str(Titanic)                      # 데이터 구조가 데이터프레임으로 변환되었음을 
 #    Age 변수에 따른 생존여부의 관계를 전체, 행별, 열별 상대도수(비율) 나타내기
 
 # Age에 따른 Survived에 대한 비율을 파악
- 
-
-                                                     # 행 별 비율 파악
-
-                                                     # 열 별 비율 파악
+prop.table(table(Titanic$Age, Titanic$Survived))
+prop.table(table(Titanic$Age, Titanic$Survived),1) # 행 별 비율 파악
+prop.table(table(Titanic$Age, Titanic$Survived),2) # 열 별 비율 파악
 
 # 4) subset : 전체 데이터에서 원하는 조건을 만족하는 부분만 추출할 때, 사용
 #subset(data,			#data : 데이터를 추출할 벡터, 행렬, 데이터프레임
@@ -297,9 +296,13 @@ str(Titanic)                      # 데이터 구조가 데이터프레임으로 변환되었음을 
 #	  select=원하는 변수명)    #select : 데이터프레임의 경우 특정 열만을 뽑고 싶은 경우에 지정
 
 #ex)iris 데이터에서 종(Species)이 setosa인것 중에 Sepal.Length의 값이 5.5이상인 값만 추출
+subset(iris, 
+      select=c(Species, Sepal.Length),
+      subset=(Species=='setosa' & Sepal.Length >= 5.5))
 
-
-
+subset(iris, 
+       subset=(Species=='setosa' & Sepal.Length >= 5.5),
+       select=c(Species, Sepal.Length))
 
 
 ## 다. apply 계열
@@ -311,10 +314,10 @@ str(Titanic)                      # 데이터 구조가 데이터프레임으로 변환되었음을 
 
 #ex 1)4 x 3 행렬을 만든 후에 각 행별로 max 값 구하기
 a <- matrix(1:12, nrow=4, ncol=3)        # matrix 생성 
-                                         # 1은 행 방향, 2는 열 방향을 의미
-
+apply(a, 1, max)                 # 1은 행 방향, 2는 열 방향을 의미
+apply(a, 1, mean) 
 #ex 2)iris 데이터의 1~4열에 대해서 평균을 구하기
- 
+apply(iris[,1:4], 2, mean)
 
 # 2) lapply : 벡터, 리스트, 표현식, 데이터 프레임 등에 함수를 적용하고, 그 결과를 리스트로 반환
 #		  데이터프레임에 대해서는 apply함수의 계산방향(MARGIN 인자값)을 2로 두었을 때와 동일하게 열별로 함수를 적용
@@ -327,18 +330,18 @@ a <- matrix(1:12, nrow=4, ncol=3)        # matrix 생성
 
 #ex 1) 숫자가 저장된 벡터를 입력받아 제곱을 한 뒤 리스트 형태로 반환
 a <- c(1,2,3)                      # a는 1,2,3의 숫자가 저장된 벡터
-                                   # FUN인자의 값으로 제곱을 계산해주는 사용자 정의 함수를 사용
+lapply(a, FUN=function(x){x^2})                     # FUN인자의 값으로 제곱을 계산해주는 사용자 정의 함수를 사용
 
 # 데이터구조 확인하기 : lapply 함수의 적용 결과 반환되는 데이터는 리스트임을 알 수 있음
-                                           # class() : 객체의 물리적 자료형 반환 
+class(lapply(a, FUN=function(x){x^2}) )                                           # class() : 객체의 물리적 자료형 반환 
 
 # 만약 리스트로 반환된 결과를 벡터로 변환하고 싶다면 unlist함수를 이용하여 원하는 결과를 얻을 수 있음
-                                      # lapply를 적용한 결과를 변수 b에 저장
-                                      # unlist함수를 이용하여 리스트 b를 벡터로 변환
+b<-lapply(a, FUN=function(x){x^2})          # lapply를 적용한 결과를 변수 b에 저장
+unlist(b)                                   # unlist함수를 이용하여 리스트 b를 벡터로 변환
 
 #ex 2) iris 데이터프레임에서 Sepal.Length 값을 입력받아 반올림을 한 뒤 리스트 형태로 반환
- 
-                                      #unlist함수를 이용하여 리스트 c를 벡터로 변환
+c<-lapply(iris$Sepal.Length,FUN=function(x){round(x)})
+unlist(c)                        #unlist함수를 이용하여 리스트 c를 벡터로 변환
 
 # 3) sapply : 벡터, 리스트, 표현식, 데이터프레임 등에 함수를 적용하고, 그 결과를 벡터 혹은 행렬로 반환
 #		  sapply는 연산결과를 벡터로 단순화해서 반환함을 의미
@@ -351,13 +354,14 @@ a <- c(1,2,3)                      # a는 1,2,3의 숫자가 저장된 벡터
 #	  simplify=TRUE, ... )  #단순화에 대한 여부를 지정하기 위한 인자로 FALSE로 값을 설정하면 리스트가 반환됨
 
 #ex 1)iris 데이터에서 각 컬럼별 데이터 타입 알아보기
- 
+sapply(iris, class)
+sapply(iris, class, simplify = FALSE)
 
 # 데이터구조 확인 : 변수마다 함수를 적용한 결과 값이 하나씩 존재하므로 문자형 벡터로 반환
-                          	# "character"는 문자를 저장한 벡터를 의미
+class(sapply(iris,summary))                          	# "character"는 문자를 저장한 벡터를 의미
 
 #ex 2)iris 데이터에서 각 컬럼에 summary함수를 적용
- 
+sapply(iris, summary)
 
 # 데이터구조 확인 : 변수마다 함수를 적용한 결과 값의 길이가 다르므로 리스트로 반환
  
@@ -381,7 +385,7 @@ test <- list(test) #벡터를 리스트 형태로 변환
 test
 
 #출력되는 결과의 양식(Template)을 Min, Q1, Median, Q3, Max 로 지정
- 
+vapply(test, fivenum, c("Min"=0, "Q1"=0, "Median"=0, "Q3"=0, "Max"=0))
 
 # 5) mapply : sapply의 확장 버전으로 여러 개의 리스트 또는 벡터로 주어진 인자를 받아 함수에 적용한 후 결과를 반환
 #		  mapply의 m은 multivariate(다변수의)를 의미
@@ -417,11 +421,11 @@ library(googleVis)
 head(Fruits)
 
 # tapply 함수를 이용하여 과일종류별 판매량의 평균 산출
- 
+tapply(Fruits$Sales, Fruits$Fruit, mean)
 
 #ex 2) Fruits 데이터에서 Location이 West인 것과 아닌 것으로 그룹을 지정하여 Profit의 평균을 구하기
 # INDEX인자에 비교구문을 사용하여 그룹을 지정
- 
+tapply(Fruits$Profit, Fruits$Location=="West", mean) 
 
 ### 4. 패키지를 활용한 데이터 전처리
 ## 가. dplyr: dplyr은 유연한 데이터 조작의 문법을 제공하며, plyr의 자기작으로 데이터 프레임을 집중적으로 다르는 툴
@@ -435,34 +439,34 @@ library(dplyr)
 select <- dplyr::select
 
 #ex 1) iris 데이터에서 Sepal.Length와 Sepal.Width 선택하기
-                                                      #필요한 변수가 추출됨을 확인할 수 있음
+select_1 <- select(iris, c(Sepal.Length,Sepal.Width)) #필요한 변수가 추출됨을 확인할 수 있음
 head(select_1)
 
 #ex 2)a번째부터 n번째 변수 선별
-                            					#iris 데이터의 1~3열이 선택됨을 확인할 수 있음
+select_2 <- select(iris, 1:3)			#iris 데이터의 1~3열이 선택됨을 확인할 수 있음
 head(select_2)
 
-                                                	#iris 데이터의 이름으로도 선택이 가능
+select_3 <- select(iris,Sepal.Length:Petal.Width)  #iris 데이터의 이름으로도 선택이 가능
 head(select_3)
 
 #ex 3)a번째부터 n번째 변수는 제외하고 선별
- 
+select_4 <- select(iris, -c(Petal.Length:Petal.Width)) 
 head(select_4)
 
 #ex 4)"xx_name"으로 시작하는 모든 변수 선별
- 
+select_5 <- select(iris, starts_with("Petal")) 
 head(select_5)
 
 #ex 5)"xx_name"으로 끝는 모든 변수 선별
- 
+select_6 <- select(iris, ends_with("Length")) 
 head(select_6)
 
 #ex 6)"xx_name"을 포함하는 모든 변수 선별
- 
+select_7 <- select(iris, contains(("S")))
 head(select_7)
 
 #ex 7)정규 표현과 일치하는 문자열이 포함된 모든 변수 선별
-                                     		#변수의 문자열 중간에 l을 포함하는 변수 선별
+select_8 <- select(iris, matches(".L."))       		#변수의 문자열 중간에 l을 포함하는 변수 선별
 head(select_8)
 
 
@@ -470,31 +474,40 @@ head(select_8)
 # filter(data.frame, 뽑아낼 조건)		#조건은 숫자, 문자에 따라 다르게 입력해야 함
 
 #ex) iris 데이터에서 특정한 행 추출하기
-                               			#Species가 setosa인 행만 추출하기
+filter(iris, Species=="setosa")            			#Species가 setosa인 행만 추출하기
 
-                                           	#AND조건으로 &나,(콤마)를 이용하여 추출이 가능
+filter(iris, Sepal.Length>7 & Sepal.Width>3)  	#AND조건으로 &나,(콤마)를 이용하여 추출이 가능
 
-                                          	#OR조건으로 | 를 이용하여 추출이 가능
+filter(iris, Petal.Length>6 | Petal.Width>2.5) #OR조건으로 | 를 이용하여 추출이 가능
 
 
 # 3) arrange() : 데이터 프레임을 정렬할 때 사용
 # arrange(dataframe, 기준열)		#기준열의 순서대로 정렬에 적용됨, desc는 내림차순정렬
 
 #ex) iris 데이터 정렬하기
-
-
+arrange(iris, Sepal.Length)
+arrange(iris, Sepal.Length, desc(Petal.Length))
 
 # 4) mutate() : 기존 열에 함수를 적용하여 새로운 열을 만듦
 # mutate(dataframe, 새로운변수 = 기존변수 조합한 수식, ...)		#기존변수 + 신규변수 모두 남아 있음
 
 #ex) iris 데이터에서 Sepal.Length와 Sepal.Width를 합쳐 Sepal.LW라는 새로운 열과 Petal.LW 만들기
 
-
+mutate_1<-mutate(iris, Sepal.LW=Sepal.Length+Sepal.Width,
+                      Petal.LW=Petal.Length+Petal.Width)
 
 head(mutate_1)
 
                      						#mutateg함수를 통해 생성된 변수를 바로 활용해 신규 변수 생성가능 
-
+mutate_2<-mutate(
+    mutate_1, 
+    Sepal=ifelse(
+        Sepal.LW>=8.5, "Large", "Small"
+        ),
+    new=ifelse(
+        Sepal=="Large",1,0
+        )
+    )
 
 head(mutate_2)
 
