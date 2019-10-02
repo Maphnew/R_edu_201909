@@ -70,13 +70,13 @@ install.packages("zoo")
 library(zoo)
 
 aa <- c(NA, NA, 1,2, NA,6, NA ,NA, NA)
-bb <-  
+bb <- na.approx(aa, na.rm =F)
 bb
 
-cc <-  
+cc <- na.locf(bb, na.rm=F) 
 cc
 
-dd <-  
+dd <- na.locf(cc, fromLast =T) 
 dd
 
 # 5) knnimputation : knnImputation은 각각의 결측치에 대해 knn방식을 써서 근접 이웃의 가중 평균으로 채워넣음
@@ -87,12 +87,12 @@ install.packages("DMwR")
 library(DMwR)
 
 #airquality 데이터에서 Ozone과 Solar.R 변수의 NA 값을 knnImputation을 통해 대치
-
+airquality[!complete.cases(airquality),]
                                     		#airquality데이터에서 NA가 있는 행을 보여줌
-
+which(!complete.cases(airquality))
                                			#NA가 있는 행의 번호를 출력
+knnImputation(airquality[1:4],k=3)[which(!complete.cases(airquality)),]
 
- 
 
 #knnImputation을 통해 결측값 대치
 
@@ -101,9 +101,9 @@ library(DMwR)
 #airquality 데이터에서 Ozone과 Solar.R 변수의 NA 값을 centralImputation을 통해 대치
 summary(airquality)			#Ozone과 Solar.R 변수의 median값을 확인
 
-                              		#airquality데이터에서 NA가 있는 행을 보여줌
+airquality[!complete.cases(airquality),]    		#airquality데이터에서 NA가 있는 행을 보여줌
 
-
+centralImputation(airquality)[which(!complete.cases(airquality)),]
 #중앙값으로 대치되어있음을 확인
 
 ### 6. 이상치 : 이상치는 의도하지 않게 잘못 입력된 데이터 또는 의도하지 않은 현상이지만 분석에 포함 또는 제거해되는 데이터 등을 말함
@@ -131,8 +131,8 @@ boxplot(x)
 
 b<-fivenum(a)	#x 데이터를 fivenum함수를 활용하여 나타나는 결과는 min, max, 1-Q, median, 3Q 순서
 
-                                    	#which를 사용하여 해당 수식에 속하는 데이터의 위치를 파악
-                                    	#-10, 19, 28, 30의 위치가 나타남, 해당 숫자를 이상치로 판정하여 처리해야 함
+which(a < fivenum(a)[2] - 1.5*IQR(a)) 	#which를 사용하여 해당 수식에 속하는 데이터의 위치를 파악
+which(a > fivenum(a)[4] + 1.5*IQR(a))	#-10, 19, 28, 30의 위치가 나타남, 해당 숫자를 이상치로 판정하여 처리해야 함
 
 # 3) 패키지 : 주로 outliers 패키지를 활용하여 이상치를 찾음, outlier 함수는 가장 크거나 작은 값을 이상치로 판정
 # outlier(data,		
@@ -147,9 +147,10 @@ b<-fivenum(a)	#x 데이터를 fivenum함수를 활용하여 나타나는 결과는 min, max, 1-Q, 
 install.packages("outliers")
 library(outliers)
 
-         			#이상치로 판정된 값을 나타냄
-                   	#가장 작은 값을 이상치로 판정
-                  	#해당 값의 이상치여부를 TRUE,FALSE로 나타냄
+outlier(a)	#이상치로 판정된 값을 나타냄
+outlier(a,opposite=T)   	#가장 작은 값을 이상치로 판정
+outlier(a,logical=T) 	#해당 값의 이상치여부를 TRUE,FALSE로 나타냄
 
-                                                            	#가장 큰값을 이상치로 판명해 삭제됨
-                                                             	#삭제된 이상치에 대체값으로 평균값이 들어감
+rm.outlier(a, fill=FALSE, median=FALSE, opposite=FALSE)	#가장 큰값을 이상치로 판명해 삭제됨
+rm.outlier(a, fill=TRUE, median=FALSE, opposite=FALSE)#삭제된 이상치에 대체값으로 평균값이 들어감
+
