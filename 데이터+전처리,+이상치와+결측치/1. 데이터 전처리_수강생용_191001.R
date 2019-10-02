@@ -15,20 +15,21 @@
 # }
 
 #ex) 정수를 입력받아 짝수인지 홀수인지 판단하는 if문 작성
-
-                                        # x/2의 나머지가 0이면 참
-                                        # 참일 때 수행할 코드
-                 
- 
- 
-                                        # 위의 조건 중 어느것도 만족하지 않을 때 수행
-
+x<-9
+if(x%%2 ==0 ){
+	print(paste(x,"는 짝수.")) # x/2의 나머지가 0이면 참
+}else if(x%%2==1){			# 참일 때 수행할 코드
+	print(paste(x,"는 홀수."))
+}else{					# 위의 조건 중 어느것도 만족하지 않을 때 수행
+	print("정수를 입력해주세요!") 
+}                                  
 
 # 2) ifelse
 #ifelse(조건, a, b) #조건이 참이면 a를 실행하고, 거짓이면 b를 실행, 중첩사용 가능
 
 #ex) 정수를 입력받아 짝수인지 홀수인지 판단하는 ifelse문을 작성
-
+x<-21.3
+ifelse(x%%2==0, "짝수", ifelse(x%%2==1, "홀수", "정수가 아닙니다."))
 
 
 
@@ -49,7 +50,9 @@
 # [1] "The year is 2019"
 
 
-
+for(year in c(2016:2019)){
+	print(paste("The year is",year))
+}
 
 
 # 2) while
@@ -62,8 +65,11 @@
 # }
 
 #ex) 위의 for문을 사용하여 수행한 예제를 while문을 이용하여 구현
-
-
+year<-2016
+while(year<=2019){
+  print(paste("The year is", year))
+  year <- year+1
+}
 
 
 
@@ -78,20 +84,10 @@
 #ex) 1~10 까지의 숫자 중 짝수만 출력하기
 
 
-
-
-
             # i가 10이상이면 반복문 종료
-
-
-
 
 # next : next 이후의 명령은 수행하지 않고, 반복문을 계속 수행
 #ex) 1~10 까지의 숫자 중 홀수만 출력하기
-
-
-
-
 
 
 ### 2. 변수 생성
@@ -104,7 +100,10 @@
 # $ 기호를 이용하면 데이터프레임에서 원하는 이름으로 새로운 변수를 즉시 생성할 수 있음
 
 #ex) R의 내장 데이터 iris에 각 행의 고유번호를 의미하는 'ID' 라는 변수를 새로 생성하기
-
+str(iris)
+iris$ID<-1:150
+iris$ID2<-1:151 #안됨.
+head(iris)
                  # iris 데이터의 구조 확인 : 150개의 행과 5개의 변수를 가지고 있음
                  # 150개의 개체의 고유번호에 해당하는 'ID' 변수를 새로 생성
                  # head 함수로 iris 데이터의 상위 6개 행을 출력해 ID 변수가 추가된 것을 확인
@@ -114,9 +113,9 @@
 # 주의할 점은 새롭게 생성하고자 하는 변수의 이름을 “ ” 안에 기입해야 함
 
 #ex) $, [ ]를 이용하여 생성한 iris의 ID값이 짝수이면 A, 홀수이면 B로 분류하는 ‘Group’ 이라는 변수를 새로 생성
-
+iris["Group"]<-ifelse(iris$ID%%2==0,"A","B")
                                              # ifelse 함수를 이용하여 iD가 짝수이면 A, 홀수이면 B를 부여
-
+head(iris)
                                              # iris 데이터의 상위 6개의 행을 출력 : Group 변수가 추가된 것을 확인할 수 있음
 
 # 3) trnsform : transform함수를 이용하여 데이터프레임에 새로운 변수를 추가할 수 있으며, 문법은 아래와 같음
@@ -125,7 +124,7 @@
 # var2=data2,...)    # data : 추가할 데이터 벡터
 
 #ex) iris 데이터에서 Sepal.Length 변수와 Petal.Length 변수의 값을 더하여 ‘Sum.Length’ 라는 새로운 변수를 생성
-
+transform(iris,Sum.Length=Sepal.Length+Petal.Length)
                                                          #sum.Length라는 변수 생성
 
 # 4) within
@@ -145,14 +144,19 @@ score_df
 
                                  # 새로운 변수 (생략하여도 상관 없음)
                                  # score가 60미만인 경우 grade에 “가” 입력
+score_df <- within(score_df,{
+  grade = character(0)
+  grade[score < 60] = "가"
+  grade[score >= 60 & score < 70] = "양"
+  grade[score >= 70 & score < 80] = "미"
+  grade[score >= 80 & score < 90] = "우"
+  grade[score >= 90] = "수"
+  grade = factor(grade, level=c("수","우","미","양","가"))
+})
 
-
-
-
-
+str(score_df)
 
   # grade변수를 "수", "우", "미", "양", "가"의 범주로 이루어진 팩터로 변환
-
 score_df
 
 ### 3. 데이터 결합 및 요약
@@ -175,7 +179,8 @@ customer2 <- data.frame(id = c("c05", "c06", "c07"),
 customer2
 
                                        # rbind를 사용하여 두 데이터프레임을 결합
-
+id_name <- rbind(customer1, customer2)
+id_name
 
 # 2) cbind : 벡터, 행렬, 데이터프레임을 열별로 합쳐서 새로운 행렬 또는 데이터프레임으로 생성 가능
 #		 cbind를 사용할 때는 결합하고자 하는 데이터의 행 개수가 동일해야 한다는 점을 기억
@@ -187,8 +192,8 @@ age_income <- data.frame(age = c(20, 25, 37, 40, 32, 45, 37),
                          income = c(2500, 6400, 0, 7000, 3400, 3800, 5010))
 
                                                # cbind를 사용하여 두 데이터프레임을 결합
- 
-
+customer<-cbind(id_name, age_income)
+customer
 # 3) merge : 두 데이터프레임을 기준이 되는 특정 칼럼의 값이 같은 행끼리 묶는 함수, 데이터베이스의 join과 동일한 역할
 # merge(x, y, by, by.x, by.y, all=FALSE, all.x, all.y)
 # x,y : 병합할 데이터프레임
