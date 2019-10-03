@@ -3,6 +3,19 @@
 ############# 1. R 기초
 # R 둘러보기   ###
 
+7+5+6+4+7+8+12
+a <- c(7,5,6,4,7,8,12)
+mean(a)
+median(a)
+
+# Create the function.
+getmode <- function(v) {
+  uniqv <- unique(v)
+  uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+getmode(a)
+
 
 ###### 작업 공간 할당하기 ###
 
