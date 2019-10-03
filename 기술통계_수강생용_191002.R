@@ -21,10 +21,11 @@ max(Se_L)
 min(Se_L)
 
 #요약
+install.packages("Hmisc")
 library(Hmisc)
 summary(Species ~. ,data=iris, method="reverse")
 # 수치형 자료는 1사분위수/중앙값/3사분위수를 나타냄
-
+summary(cyl ~. ,data=mtcars, method="reverse")
 
 install.packages("MASS")
 library(MASS)
@@ -68,21 +69,22 @@ str(Cars93)
 install.packages("fBasics")
 library(fBasics)
 
-
+skewness(Cars93$Price)
 #- 오른쪽으로 꼬리가 긴 형태를 띠고 있음.
+plot(density(Cars93$Price))
 
- 
+with(Cars93, tapply(Price, Type, skewness))
 #- 차량의 Type 별 Price의 왜도를 확인
 
- 
+kurtosis(Cars93$Price)
 #- 양수로 나타나 정규분포보다 뾰족한 형태를 취하고 있다고 할 수 있음
 
- 
+with(Cars93, tapply(Price, Type, kurtosis))
 #- 차량의 Type 별 Price의 첨도를 확인
 
 #줄기-잎 그림 그리기
- 
-
+stem(Cars93$MPG.highway)
+plot(density(Cars93$MPG.highway))
 #분할표 그리기
 
 #  xtabs(
@@ -90,11 +92,9 @@ library(fBasics)
              # 나타내는 변수들이다. "~"의 왼쪽에 빈도를 나타내는 변수를 적을 수 있다.
 #  data,     # 포뮬러를 적용할 데이터
 #)
-
-
-
-
-
+xtabs(~ Type + Cylinders, data=Cars93)
+xtabs(Cars93$Origin=="USA" ~ Type + Cylinders, data=Cars93)
+xtabs(Cars93$Origin=="non-USA"~ Type + Cylinders, data=Cars93)
 
 # Origin 변수가 USA 일때와 non-USA일때를 구분하여 분할표를 그림
 
