@@ -510,6 +510,8 @@ TukeyHSD(aov(Sepal.Width~Species, data=iris))
 
 install.packages("doBy")
 library(doBy)
+install.packages("agricolae")
+library(agricolae)
 
 comparison <- scheffe.test(result, # ANOVA model 
                            "Species", # vector treatment applied to each experimental unit
@@ -522,7 +524,7 @@ comparison <- scheffe.test(result, # ANOVA model
 #ex) 정유사에서 온도(Factor, one-way)에 따라서 휘발유 생산량에 변화가 있는지 (즉, 영향이 있는지) 알아보기 위하여 
 #    온도를 3가지 조건(3 Factor Levels)으로 실험설계를 하여 10번에 걸쳐서 휘발유 생산량을 측정하였습니다. 
 #    관찰값이 아래와 같을 때 조사되었을 때 온도의 조건에 따라서 휘발유 생산량에 차이가 있는지 
-#    유의수준 α = 10% 로 검정하시오.
+#    유의수준 α = 0.1 로 검정하시오.
 
 # 온도 조건 1 - {50.5, 52.1, 51.9, 52.4, 50.6, 51.4, 51.2, 52.2, 51.5, 50.8}
 # 온도 조건 2 - {47.5, 47.7, 46.6, 47.1, 47.2, 47.8, 45.2, 47.4, 45.0, 47.9}
@@ -533,8 +535,9 @@ comparison <- scheffe.test(result, # ANOVA model
 
 #solution
 
-#귀무가설 :  
-#대립가설 :  
+#귀무가설 :  온도(Factor, one-way)에 따라서 휘발유 생산량에 변화가 없다.
+#대립가설 :  온도(Factor, one-way)에 따라서 휘발유 생산량에 변화가 있다.
+#            적어도 한 집단의 평균은 다르다.
 
 
 # Q-2. 온도의 조건에 따라서 휘발유 생산량에 차이가 있는지에 대해 가설검정하시오.
@@ -542,27 +545,32 @@ comparison <- scheffe.test(result, # ANOVA model
 #      (정규성, 등분산성 검정은 생략하고 유의수준 0.05에서 검정하시오.)
 #solution
 
-y1 <-  
-y2 <-  
-y3 <-  
+y1 <-  c(50.5, 52.1, 51.9, 52.4, 50.6, 51.4, 51.2, 52.2, 51.5, 50.8)
+y2 <-  c(47.5, 47.7, 46.6, 47.1, 47.2, 47.8, 45.2, 47.4, 45.0, 47.9)
+y3 <-  c(46.0, 47.1, 45.6, 47.1, 47.2, 46.4, 45.9, 47.1, 44.9, 46.2)
 
-y<-  
-group<- 
+y<-  c(y1,y2,y3)
+group<- c(rep(1,10),rep(2,10),rep(3,10))
 
 group_df<-data.frame(y,group)
 group_df
 
 #group 변수 factor로 변환
-group_df <- 
+group_df <- transform(group_df, group = factor(group))
+sapply(group_df, class)
 
 
-result<- 
+result<- aov(y ~ group, data = group_df)
 
 summary(result)
 
- 
+TukeyHSD(result)
 
-comparison <- 
+comparison <- scheffe.test(result, # ANOVA model 
+                           "group", # vector treatment applied to each experimental unit
+                           alpha = 0.05, # significant level
+                           console=TRUE, # print out
+)
 
 
 
