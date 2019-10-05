@@ -590,11 +590,11 @@ comparison <- scheffe.test(result, # ANOVA model
 
 ## 함수
 # 1) 상관계수 산출
-# cor(x, method=c("pearson", "kendall", "spearman")) 
+# correlation
+# cor(x, method=c("pearson", "kendall", "spearman")) # kendall 잘 안써요!
 
 # 2) 상관계수에 대한 검정
-# - cor.test(x, y, alternative=c("two.sided", "less", "greater"),
-#            method=c("pearson", "kendal", "spearman"))
+# - cor.test(x, y, method=c("pearson", "kendal", "spearman"))
 #   x, y : 상관계수에 대한 검정을 수행할 숫자형 벡터
 #   alternative : 대립가설 (기본값은 양측 검정)
 #   method : 상관계수의 종류 (기본값은 피어슨)
@@ -602,6 +602,8 @@ comparison <- scheffe.test(result, # ANOVA model
 
 # 예제 : c(1,2,3,4,5)와 c(1,0,3,4,5) 간의 피어슨 상관계수를 산출하고, 
 # 그것에 대한 검정을 수행해보자.
+x<-c(1,2,3,4,5)
+y<-c(1,0,3,4,5)
 
 cor(c(1,2,3,4,5), c(1,0,3,4,5))   #피어슨 상관계수 산출
 cor.test(c(1,2,3,4,5), c(1,0,3,4,5), method="pearson")    #피어슨 상관계수 검정
@@ -617,13 +619,17 @@ cor.test(c(1,2,3,4,5), c(1,0,3,4,5), method="pearson")    #피어슨 상관계수 검정
 A_doc<-c(4,6,3,4,8,5,8,7,9,4,8,4,3,6,7)
 B_doc<-c(5,5,3,4,8,7,2,6,9,5,6,4,3,7,7)
 
- 
-#warning의 경우, 같은 값들이 존재하여 나타나는 경고임.
-# 상관계수에 대한 검정을 수행한 결과, p-value가         로 0.05보다    므로
-# 통계적으로      라고 판단할 수 있다.
-# 상관계수는           로 그 절댓값이   에 가까운 큰 숫자이다.
-# 따라서 두 벡터 간에는           가 있다.
+cor(A_doc, B_doc)
+# cor.test(A_doc, B_doc)
+# cor.test(A_doc, B_doc, method="pearson")
+cor.test(A_doc, B_doc, method="spearman") # 
 
+#warning의 경우, 같은 값들이 존재하여 나타나는 경고임.
+# 상관계수에 대한 검정을 수행한 결과, p-value가  0.01638  로 0.05보다 작으므로
+# 통계적으로 상관관계가 있다 라고 판단할 수 있다.
+# 상관계수는 0.607152 로 그 절댓값이  1 에 가까운 큰 숫자이다.
+# 따라서 두 벡터 간에는  강한 양의 상관관계가 있다.
+# rm(list=ls())
 ##### 7. 회귀분석
 #---------------------------------------------------------------------------
 
@@ -631,7 +637,8 @@ B_doc<-c(5,5,3,4,8,7,2,6,9,5,6,4,3,7,7)
 
 ## 개념
 # - 하나나 그 이상의 독립변수들이 종속변수에 미치는 영향을 추정할 수 있는 통계기법
-# - 독립변수의 개수가 하나 : 단순선형회귀분석, 독립변수의 개수가 두 개 이상 : 다중선형회귀분석
+# - 독립변수의 개수가 하나       : 단순선형회귀분석, 
+# - 독립변수의 개수가 두 개 이상 : 다중선형회귀분석
 
 
 ## 함수
